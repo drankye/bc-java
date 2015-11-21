@@ -24,9 +24,10 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
  * ExtendedCertificate ::= SEQUENCE {
- * extendedCertificateInfo ExtendedCertificateInfo,
- * signatureAlgorithm SignatureAlgorithmIdentifier,
- * signature Signature }
+ *   extendedCertificateInfo ExtendedCertificateInfo,
+ *   signatureAlgorithm SignatureAlgorithmIdentifier,
+ *   signature Signature
+ * }
  */
 public class ExtendedCertificate extends Asn1SequenceType {
     private static final int EXTENDED_CERTIFICATE_INFO = 0;

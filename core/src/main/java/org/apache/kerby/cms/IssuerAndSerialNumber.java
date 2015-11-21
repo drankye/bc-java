@@ -35,9 +35,7 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * CertificateSerialNumber ::= INTEGER  -- See RFC 5280
  * </pre>
  */
-public class IssuerAndSerialNumber
-    extends Asn1SequenceType
-{
+public class IssuerAndSerialNumber extends Asn1SequenceType {
     private static final int ISSUER = 0;
     private static final int SERIAL_NUMBER = 1;
 

@@ -19,9 +19,25 @@
  */
 package org.apache.kerby.cms;
 
+import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.Asn1SequenceType;
+
 /**
- * TODO
+ * PKIX RFC-2459
+ *
+ * The X.509 v2 CRL syntax is as follows.  For signature calculation,
+ * the data that is to be signed is ASN.1 DER encoded.
+ *
+ * <pre>
+ * CertificateList  ::=  SEQUENCE  {
+ *      tbsCertList          TBSCertList,
+ *      signatureAlgorithm   AlgorithmIdentifier,
+ *      signatureValue       BIT STRING  }
+ * </pre>
  */
-public class CertificateList {
-    //TODO
+public class CertificateList extends Asn1SequenceType {
+
+    public CertificateList(Asn1FieldInfo[] tags) {
+        super(tags);
+    }
 }

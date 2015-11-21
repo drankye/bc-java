@@ -19,8 +19,6 @@
  */
 package org.apache.kerby.cms;
 
-import org.apache.kerby.kerberos.kerb.spec.cms.AlgorithmIdentifier;
-
 /**
  * SignatureAlgorithmIdentifier ::= AlgorithmIdentifier
  */

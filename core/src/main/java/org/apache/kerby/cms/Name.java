@@ -25,8 +25,7 @@ import org.apache.kerby.asn1.type.Asn1FieldInfo;
 /**
  * The X.500 Name object.
  * <pre>
- *     Name ::= CHOICE {
- *                       RDNSequence }
+ *     Name ::= CHOICE { RDNSequence }
  *
  *     RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
  *
@@ -37,8 +36,7 @@ import org.apache.kerby.asn1.type.Asn1FieldInfo;
  *                                   value ANY }
  * </pre>
  */
-public class Name
-    extends Asn1Choice {
+public class Name extends Asn1Choice {
     private static final int RDN_SEQUENCE = 0;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{

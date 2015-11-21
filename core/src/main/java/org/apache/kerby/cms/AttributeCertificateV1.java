@@ -19,6 +19,7 @@
  */
 package org.apache.kerby.cms;
 
+import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
@@ -28,5 +29,7 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * signature BIT STRING }
  */
 public class AttributeCertificateV1 extends Asn1SequenceType {
-    //TODO
+    public AttributeCertificateV1(Asn1FieldInfo[] tags) {
+        super(tags);
+    }
 }

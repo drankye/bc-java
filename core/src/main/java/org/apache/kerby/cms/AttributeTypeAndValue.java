@@ -1,17 +1,13 @@
 package org.apache.kerby.cms;
 
-import org.apache.kerby.asn1.type.Asn1Any;
-import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
-import org.apache.kerby.asn1.type.Asn1Type;
-import org.apache.kerby.kerberos.kerb.spec.KrbSequenceType;
+import org.apache.kerby.asn1.type.*;
 
 /**
  * AttributeTypeAndValue ::= SEQUENCE {
  *     type  OBJECT IDENTIFIER,
  *     value ANY }
  */
-public class AttributeTypeAndValue extends KrbSequenceType {
+public class AttributeTypeAndValue extends Asn1SequenceType {
 
     private static final int TYPE = 0;
     private static final int VALUE = 1;

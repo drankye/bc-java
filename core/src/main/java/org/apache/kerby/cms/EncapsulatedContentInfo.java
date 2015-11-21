@@ -27,8 +27,9 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
  * EncapsulatedContentInfo ::= SEQUENCE {
- * eContentType ContentType,
- * eContent [0] EXPLICIT OCTET STRING OPTIONAL }
+ *   eContentType ContentType,
+ *   eContent [0] EXPLICIT OCTET STRING OPTIONAL
+ * }
  *
  * ContentType ::= OBJECT IDENTIFIER
  */

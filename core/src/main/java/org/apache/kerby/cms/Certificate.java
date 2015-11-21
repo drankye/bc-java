@@ -19,9 +19,22 @@
  */
 package org.apache.kerby.cms;
 
+import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.Asn1SequenceType;
+
 /**
- * TODO
+ * an X509Certificate structure.
+ * <pre>
+ *  Certificate ::= SEQUENCE {
+ *      tbsCertificate          TBSCertificate,
+ *      signatureAlgorithm      AlgorithmIdentifier,
+ *      signature               BIT STRING
+ *  }
+ * </pre>
  */
-public class Certificate {
-    //TODO
+public class Certificate extends Asn1SequenceType {
+
+    public Certificate(Asn1FieldInfo[] tags) {
+        super(tags);
+    }
 }

@@ -24,9 +24,10 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
  * ExtendedCertificateInfo ::= SEQUENCE {
- * version CMSVersion,
- * certificate Certificate,
- * attributes UnauthAttributes }
+ *   version CMSVersion,
+ *   certificate Certificate,
+ *   attributes UnauthAttributes
+ * }
  */
 public class ExtendedCertificateInfo extends Asn1SequenceType {
     private static final int CMS_VERSION = 0;

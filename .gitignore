@@ -1,5 +1,5 @@
 .idea/
-core/build
+build
 *.iml
 *.class
 target/

@@ -37,9 +37,7 @@ import org.apache.kerby.asn1.type.Asn1Set;
  * AttributeValue ::= ANY
  * </pre>
  */
-public class Attribute
-    extends Asn1SequenceType
-{
+public class Attribute extends Asn1SequenceType {
     private static final int ATTR_TYPE = 0;
     private static final int ATTR_VALUES = 1;
 
@@ -51,6 +49,4 @@ public class Attribute
     public Attribute() {
         super(fieldInfos);
     }
-
-    //TODO
 }

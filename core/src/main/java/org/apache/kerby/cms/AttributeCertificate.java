@@ -19,9 +19,13 @@
  */
 package org.apache.kerby.cms;
 
-/**
- * TODO
- */
-public class AttributeCertificate {
-    //TODO
+
+import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.Asn1SequenceType;
+
+public class AttributeCertificate extends Asn1SequenceType {
+
+    public AttributeCertificate(Asn1FieldInfo[] tags) {
+        super(tags);
+    }
 }

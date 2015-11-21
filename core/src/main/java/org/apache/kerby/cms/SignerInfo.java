@@ -65,7 +65,7 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  *     issuerAndSerialNumber {@link IssuerAndSerialNumber},
  *     subjectKeyIdentifier  [0] SubjectKeyIdentifier }
  *
- * -- See {@link Attributes} for generalized SET OF {@link Attribute}
+ * -- See Attributes for generalized SET OF {@link Attribute}
  *
  * SignedAttributes   ::= SET SIZE (1..MAX) OF Attribute
  * UnsignedAttributes ::= SET SIZE (1..MAX) OF Attribute
@@ -79,9 +79,7 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * SignatureValue ::= OCTET STRING
  * </pre>
  */
-public class SignerInfo
-    extends Asn1SequenceType
-{
+public class SignerInfo extends Asn1SequenceType {
     private static final int CMS_VERSION = 0;
     private static final int SID = 1;
     private static final int DIGEST_ALGORITHM = 2;

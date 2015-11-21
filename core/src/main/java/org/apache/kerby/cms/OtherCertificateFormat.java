@@ -27,8 +27,9 @@ import org.apache.kerby.asn1.type.Asn1Type;
 
 /**
  * OtherCertificateFormat ::= SEQUENCE {
- * otherCertFormat OBJECT IDENTIFIER,
- * otherCert ANY DEFINED BY otherCertFormat }
+ *   otherCertFormat OBJECT IDENTIFIER,
+ *   otherCert ANY DEFINED BY otherCertFormat
+ * }
  */
 public class OtherCertificateFormat extends Asn1SequenceType {
 

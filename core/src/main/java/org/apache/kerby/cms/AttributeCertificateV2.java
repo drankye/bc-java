@@ -19,8 +19,13 @@
  */
 package org.apache.kerby.cms;
 
+import org.apache.kerby.asn1.type.Asn1FieldInfo;
+
 /**
  * AttributeCertificateV2 ::= AttributeCertificate
  */
 public class AttributeCertificateV2 extends AttributeCertificate {
+    public AttributeCertificateV2(Asn1FieldInfo[] tags) {
+        super(tags);
+    }
 }

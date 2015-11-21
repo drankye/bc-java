@@ -20,7 +20,7 @@
 package org.apache.kerby.cms;
 
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.kerberos.kerb.spec.KrbSequenceType;
+import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
  * <a href="http://tools.ietf.org/html/rfc5652#section-5.1">RFC 5652</a>:
@@ -63,7 +63,7 @@ import org.apache.kerby.kerberos.kerb.spec.KrbSequenceType;
  * <p>
  */
 
-public class SignedData extends KrbSequenceType {
+public class SignedData extends Asn1SequenceType {
     private static final int CMS_VERSION = 0;
     private static final int DIGEST_ALGORITHMS = 1;
     private static final int ENCAP_CONTENT_INFO = 2;
@@ -85,7 +85,7 @@ public class SignedData extends KrbSequenceType {
     }
 
     public int getVersion() {
-        return getFieldAsInt(CMS_VERSION);
+        return getFieldAsInteger(CMS_VERSION);
     }
 
     public void setVersion(int version) {

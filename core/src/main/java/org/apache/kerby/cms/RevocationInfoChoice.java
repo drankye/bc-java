@@ -24,8 +24,9 @@ import org.apache.kerby.asn1.type.Asn1FieldInfo;
 
 /**
  * RevocationInfoChoice ::= CHOICE {
- * crl CertificateList,
- * other [1] IMPLICIT OtherRevocationInfoFormat }
+ *   crl CertificateList,
+ *   other [1] IMPLICIT OtherRevocationInfoFormat
+ * }
  */
 public class RevocationInfoChoice extends Asn1Choice {
     private static final int CRL = 0;
