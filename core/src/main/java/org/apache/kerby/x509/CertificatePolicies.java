@@ -17,15 +17,16 @@
  *  under the License.
  *
  */
-package org.apache.kerby.cms;
+package org.apache.kerby.x509;
 
+import org.apache.kerby.asn1.type.Asn1SequenceOf;
 
-import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1SequenceType;
+/**
+ *
+ * <pre>
+ * CertificatePolicies ::= SEQUENCE SIZE {1..MAX} OF PolicyInformation
+ * </pre>
+ */
+public class CertificatePolicies extends Asn1SequenceOf<PolicyInformation> {
 
-public class AttributeCertificate extends Asn1SequenceType {
-
-    public AttributeCertificate(Asn1FieldInfo[] tags) {
-        super(tags);
-    }
 }

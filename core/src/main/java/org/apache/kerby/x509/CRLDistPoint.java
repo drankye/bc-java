@@ -17,12 +17,16 @@
  *  under the License.
  *
  */
-package org.apache.kerby.cms;
+package org.apache.kerby.x509;
 
-import org.apache.kerby.x509.AlgorithmIdentifier;
+import org.apache.kerby.asn1.type.Asn1SequenceOf;
 
 /**
- * SignatureAlgorithmIdentifier ::= AlgorithmIdentifier
+ *
+ * <pre>
+ * CRLDistPoint ::= SEQUENCE SIZE {1..MAX} OF DistributionPoint
+ * </pre>
  */
-public class SignatureAlgorithmIdentifier extends AlgorithmIdentifier {
+public class CRLDistPoint extends Asn1SequenceOf<DistributionPoint> {
+
 }

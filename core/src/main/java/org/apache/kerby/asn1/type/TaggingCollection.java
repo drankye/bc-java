@@ -27,17 +27,21 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 
 /**
- * For tagging a collection type with tagNo, either application specific or context specific class
+ * For tagging a collection type with tagNo, either application specific or
+ * context specific class
  */
 public abstract class TaggingCollection extends AbstractAsn1Type<Asn1CollectionType> {
     private Asn1Tagging<Asn1CollectionType> tagging;
     private Asn1CollectionType tagged;
 
-    public TaggingCollection(int taggingTagNo, Asn1FieldInfo[] tags, boolean isAppSpecific) {
-        super(isAppSpecific ? TagClass.APPLICATION : TagClass.CONTEXT_SPECIFIC, taggingTagNo);
+    public TaggingCollection(int taggingTagNo,
+                             Asn1FieldInfo[] tags, boolean isAppSpecific) {
+        super(isAppSpecific ? TagClass.APPLICATION :
+            TagClass.CONTEXT_SPECIFIC, taggingTagNo);
         this.tagged = createTaggedCollection(tags);
         setValue(tagged);
-        this.tagging = new Asn1Tagging<Asn1CollectionType>(taggingTagNo, tagged, isAppSpecific);
+        this.tagging = new Asn1Tagging<Asn1CollectionType>(taggingTagNo,
+            tagged, isAppSpecific);
         getEncodingOption().useExplicit();
     }
 

@@ -17,16 +17,16 @@
  *  under the License. 
  *  
  */
-package org.apache.kerby.cms;
+package org.apache.kerby.x509;
 
 
 import org.apache.kerby.asn1.type.*;
 
 /**
- AlgorithmIdentifier  ::=  SEQUENCE  {
-     algorithm               OBJECT IDENTIFIER,
-     parameters              ANY DEFINED BY algorithm OPTIONAL
- }
+ * AlgorithmIdentifier  ::=  SEQUENCE  {
+ *    algorithm               OBJECT IDENTIFIER,
+ *    parameters              ANY DEFINED BY algorithm OPTIONAL
+ * }
  */
 public class AlgorithmIdentifier extends Asn1SequenceType {
     private static final int ALGORITHM = 0;

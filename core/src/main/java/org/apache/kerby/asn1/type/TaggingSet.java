@@ -20,7 +20,8 @@
 package org.apache.kerby.asn1.type;
 
 /**
- * For tagging a sequence type with tagNo, either application specific or context specific class
+ * For tagging a sequence type with tagNo, either application specific or
+ * context specific class
  */
 public class TaggingSet extends TaggingCollection {
 

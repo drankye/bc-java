@@ -43,8 +43,7 @@ import org.apache.kerby.asn1.type.Asn1Type;
  * }
  * </pre>
  */
-public class ContentInfo
-    extends Asn1SequenceType {
+public class ContentInfo extends Asn1SequenceType {
 
     private static final int CONTENT_TYPE = 0;
     private static final int CONTENT = 1;

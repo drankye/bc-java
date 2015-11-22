@@ -5,5 +5,5 @@ import org.apache.kerby.asn1.type.Asn1OctetString;
 /**
  * SignatureValue ::= OCTET STRING
  */
-public class SignatureValue extends Asn1OctetString{
+public class SignatureValue extends Asn1OctetString {
 }

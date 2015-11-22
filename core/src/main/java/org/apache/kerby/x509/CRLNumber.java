@@ -17,12 +17,16 @@
  *  under the License.
  *
  */
-package org.apache.kerby.cms;
+package org.apache.kerby.x509;
 
-import org.apache.kerby.x509.AlgorithmIdentifier;
+import org.apache.kerby.asn1.type.Asn1Integer;
 
 /**
- * SignatureAlgorithmIdentifier ::= AlgorithmIdentifier
+ *
+ * <pre>
+ * CRLNumber::= INTEGER(0..MAX)
+ * </pre>
  */
-public class SignatureAlgorithmIdentifier extends AlgorithmIdentifier {
+public class CRLNumber extends Asn1Integer {
+
 }

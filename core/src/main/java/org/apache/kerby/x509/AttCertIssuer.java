@@ -17,12 +17,35 @@
  *  under the License.
  *
  */
-package org.apache.kerby.cms;
+package org.apache.kerby.x509;
 
-import org.apache.kerby.x509.AlgorithmIdentifier;
+import org.apache.kerby.asn1.type.*;
+import org.bouncycastle.asn1.ASN1Encodable;
+import org.bouncycastle.asn1.ASN1Primitive;
 
 /**
- * SignatureAlgorithmIdentifier ::= AlgorithmIdentifier
+ *
+ * <pre>
+ *  AttCertIssuer ::= CHOICE {
+ *       v1Form   GeneralNames,  -- MUST NOT be used in this profile
+ *       v2Form   [0] V2Form     -- v2 only
+ *  }
+ * </pre>
  */
-public class SignatureAlgorithmIdentifier extends AlgorithmIdentifier {
+public class AttCertIssuer extends Asn1Choice {
+    private static final int V1_FORM = 0;
+    private static final int V2_FORM = 1;
+
+    static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
+        new Asn1FieldInfo(V1_FORM, -1, GeneralNames.class),
+        new Asn1FieldInfo(V2_FORM, -1, V2Form.class)
+    };
+
+    public AttCertIssuer() {
+        super(fieldInfos);
+    }
+
+    public ASN1Encodable getCertIssuer() {
+        return null;
+    }
 }

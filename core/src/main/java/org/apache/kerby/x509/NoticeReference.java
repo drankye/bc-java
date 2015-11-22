@@ -6,55 +6,57 @@
  *  to you under the Apache License, Version 2.0 (the
  *  "License"); you may not use this file except in compliance
  *  with the License.  You may obtain a copy of the License at
- *  
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  *  Unless required by applicable law or agreed to in writing,
  *  software distributed under the License is distributed on an
  *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  *  KIND, either express or implied.  See the License for the
  *  specific language governing permissions and limitations
- *  under the License. 
- *  
+ *  under the License.
+ *
  */
-package org.apache.kerby.cms;
+package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1BitString;
+import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
- * SubjectPublicKeyInfo  ::=  SEQUENCE  {
- *    algorithm            AlgorithmIdentifier,
- *    subjectPublicKey     BIT STRING
- * }
+ * <code>NoticeReference</code> class, used in
+ * <code>CertificatePolicies</code> X509 V3 extensions
+ * (in policy qualifiers).
+ * 
+ * <pre>
+ *  NoticeReference ::= SEQUENCE {
+ *      organization     DisplayText,
+ *      noticeNumbers    SEQUENCE OF INTEGER }
+ *
+ * </pre> 
+ * 
+ * @see PolicyQualifierInfo
+ * @see PolicyInformation
  */
-public class SubjectPublicKeyInfo extends Asn1SequenceType {
+public class NoticeReference extends Asn1SequenceType {
     private static final int ALGORITHM = 0;
-    private static final int SUBJECT_PUBLIC_KEY = 1;
+    private static final int PARAMETERS = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(ALGORITHM, -1, AlgorithmIdentifier.class),
-            new Asn1FieldInfo(SUBJECT_PUBLIC_KEY, -1, Asn1BitString.class)
+        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
+        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
     };
 
-    public SubjectPublicKeyInfo() {
+    public NoticeReference() {
         super(fieldInfos);
     }
 
-    public AlgorithmIdentifier getAlgorithm() {
-        return getFieldAs(ALGORITHM, AlgorithmIdentifier.class);
-    }
-
-    public void setAlgorithm(AlgorithmIdentifier algorithm) {
-        setFieldAs(ALGORITHM, algorithm);
-    }
-
-    public byte[] getSubjectPubKey() {
-        return getFieldAsOctets(SUBJECT_PUBLIC_KEY);
-    }
-
-    public void setSubjectPubKey(byte[] subjectPubKey) {
-        setFieldAs(SUBJECT_PUBLIC_KEY, new Asn1BitString(subjectPubKey));
-    }
+   public DisplayText getOrganization() {
+       return null;
+   }
+   
+   public int[] getNoticeNumbers() {
+       return null;
+   }
 }

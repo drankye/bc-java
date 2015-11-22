@@ -19,6 +19,8 @@
  */
 package org.apache.kerby.cms;
 
+import org.apache.kerby.x509.AlgorithmIdentifier;
+
 /**
  * DigestAlgorithmIdentifier ::= AlgorithmIdentifier
  */

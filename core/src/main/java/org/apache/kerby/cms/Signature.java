@@ -24,5 +24,5 @@ import org.apache.kerby.asn1.type.Asn1BitString;
 /**
  * Signature ::= BIT STRING
  */
-public class Signature extends Asn1BitString{
+public class Signature extends Asn1BitString {
 }
