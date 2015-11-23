@@ -19,15 +19,10 @@
  */
 package org.apache.kerby.cms;
 
-import org.apache.kerby.asn1.type.Asn1Any;
-import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
-import org.apache.kerby.asn1.type.Asn1SequenceType;
-import org.apache.kerby.asn1.type.Asn1Type;
+import org.apache.kerby.asn1.type.*;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5652#section-3">RFC 5652</a> ContentInfo, and 
- * <a href="http://tools.ietf.org/html/rfc5652#section-5.2">RFC 5652</a> EncapsulatedContentInfo objects.
+ * Ref. RFC 5652
  *
  * <pre>
  * ContentInfo ::= SEQUENCE {

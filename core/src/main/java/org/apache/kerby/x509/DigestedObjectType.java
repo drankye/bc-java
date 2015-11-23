@@ -25,25 +25,20 @@ import org.apache.kerby.asn1.type.Asn1Enumerated;
 /**
  *
  * <pre>
- * CRLReason ::= ENUMERATED {
- *  unspecified             (0),
- *  keyCompromise           (1),
- *  cACompromise            (2),
- *  affiliationChanged      (3),
- *  superseded              (4),
- *  cessationOfOperation    (5),
- *  certificateHold         (6),
- *  removeFromCRL           (8),
- *  privilegeWithdrawn      (9),
- *  aACompromise           (10)
- * }
+ *         digestedObjectType  ENUMERATED {
+ *                 publicKey            (0),
+ *                 publicKeyCert        (1),
+ *                 otherObjectTypes     (2)
+ *         }
+ *   
  * </pre>
+ * 
  */
 
-enum CRLReasonEnumType implements Asn1EnumType {
-    UNSPECIFIED,
-    KEY_COMPROMISE,
-    CA_COMPROMISE;
+enum DigestedObjectEnumType implements Asn1EnumType {
+    PUBLIC_KEY,
+    PUBLIC_KEY_CERT,
+    OTHER_OBJECT_TYPES;
 
     @Override
     public int getIntValue() {
@@ -51,9 +46,9 @@ enum CRLReasonEnumType implements Asn1EnumType {
     }
 }
 
-public class CRLReason extends Asn1Enumerated<CRLReasonEnumType> {
+public class DigestedObjectType extends Asn1Enumerated<DigestedObjectEnumType> {
     @Override
     public Asn1EnumType[] getAllEnumValues() {
-        return CRLReasonEnumType.values();
+        return DigestedObjectEnumType.values();
     }
 }

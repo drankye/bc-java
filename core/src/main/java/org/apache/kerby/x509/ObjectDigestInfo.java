@@ -45,11 +45,11 @@ import org.bouncycastle.asn1.ASN1ObjectIdentifier;
  * 
  */
 public class ObjectDigestInfo extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
+    private static final int DIGESTED_OBJECT_TYPE = 0;
     private static final int PARAMETERS = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
+        new Asn1FieldInfo(DIGESTED_OBJECT_TYPE, -1, DigestedObjectType.class),
         new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
     };
 
