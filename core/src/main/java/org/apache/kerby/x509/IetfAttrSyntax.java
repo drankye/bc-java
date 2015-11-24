@@ -40,13 +40,12 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * </pre>
  */
 public class IetfAttrSyntax extends Asn1SequenceType {
-    public static final int OCTETS    = 1;
-    public static final int OID       = 2;
-    public static final int UTF8      = 3;
+    public static final int POLICY_AUTHORITY = 0;
+    public static final int VALUES = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(OCTETS, -1, Asn1OctetString.class),
-        new Asn1FieldInfo(OID, -1, Asn1ObjectIdentifier.class)
+        new Asn1FieldInfo(POLICY_AUTHORITY, -1, GeneralNames.class),
+        new Asn1FieldInfo(VALUES, -1, IetfAttrSyntaxChoices.class)
     };
 
     public IetfAttrSyntax() {
@@ -54,10 +53,18 @@ public class IetfAttrSyntax extends Asn1SequenceType {
     }
 
     public GeneralNames getPolicyAuthority() {
-        return null;
+        return getFieldAs(POLICY_AUTHORITY, GeneralNames.class);
     }
 
-    public int getValueType() {
-        return -1;
+    public void setPolicyAuthority(GeneralNames policyAuthority) {
+        setFieldAs(POLICY_AUTHORITY, policyAuthority);
+    }
+
+    public IetfAttrSyntaxChoices getValues() {
+        return getFieldAs(VALUES, IetfAttrSyntaxChoices.class);
+    }
+
+    public void setValues(IetfAttrSyntaxChoices values) {
+        setFieldAs(VALUES, values);
     }
 }

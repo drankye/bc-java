@@ -43,11 +43,19 @@ public class AttCertValidityPeriod extends Asn1SequenceType {
         super(fieldInfos);
     }
 
-    public ASN1GeneralizedTime getNotBeforeTime() {
-        return null;
+    public Asn1GeneralizedTime getNotBeforeTime() {
+        return getFieldAs(NOT_BEFORE, Asn1GeneralizedTime.class);
     }
 
-    public ASN1GeneralizedTime getNotAfterTime() {
-        return null;
+    public void setNotBeforeTime(Asn1GeneralizedTime notBeforeTime) {
+        setFieldAs(NOT_BEFORE, notBeforeTime);
+    }
+
+    public Asn1GeneralizedTime getNotAfterTime() {
+        return getFieldAs(NOT_AFTER, Asn1GeneralizedTime.class);
+    }
+
+    public void setNotAfterTime(Asn1GeneralizedTime notAfterTime) {
+        setFieldAs(NOT_AFTER, notAfterTime);
     }
 }

@@ -19,32 +19,38 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Choice;
+import org.apache.kerby.asn1.type.Asn1BitString;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
- * Ref. RFC 3281
- * <pre>
- *     Target  ::= CHOICE {
- *       targetName          [0] GeneralName,
- *       targetGroup         [1] GeneralName,
- *       targetCert          [2] TargetCert
- *     }
- * </pre>
+ * TargetCert  ::= SEQUENCE {
+ * targetCertificate    IssuerSerial,
+ * targetName           GeneralName OPTIONAL,
+ * certDigestInfo       ObjectDigestInfo OPTIONAL
+ * }
  */
-public class Target extends Asn1Choice {
-    private static final int TARGET_NAME = 0;
-    private static final int TARGET_GROUP = 1;
-    private static final int TARGET_CERT = 1;
+public class TargetCert extends Asn1SequenceType{
+    private static final int TARGET_CERTIFICATE = 0;
+    private static final int TARGET_NAME = 1;
+    private static final int CERT_DIGEST_INFO = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(TARGET_NAME, -1, GeneralName.class),
-        new Asn1FieldInfo(TARGET_GROUP, -1, GeneralName.class),
-        new Asn1FieldInfo(TARGET_CERT, -1, TargetCert.class),
+            new Asn1FieldInfo(TARGET_CERTIFICATE, -1, IssuerSerial.class),
+            new Asn1FieldInfo(TARGET_NAME, -1, GeneralName.class),
+            new Asn1FieldInfo(CERT_DIGEST_INFO, -1, ObjectDigestInfo.class)
     };
 
-    public Target() {
+    public TargetCert() {
         super(fieldInfos);
+    }
+
+    public IssuerSerial getTargetCertificate() {
+        return getFieldAs(TARGET_CERTIFICATE, IssuerSerial.class);
+    }
+
+    public void setTargetCertificate(IssuerSerial targetCertificate) {
+        setFieldAs(TARGET_CERTIFICATE, targetCertificate);
     }
 
     public GeneralName getTargetName() {
@@ -55,11 +61,11 @@ public class Target extends Asn1Choice {
         setFieldAs(TARGET_NAME, targetName);
     }
 
-    public GeneralName getTargetGroup() {
-        return getFieldAs(TARGET_GROUP, GeneralName.class);
+    public ObjectDigestInfo getCertDigestInfo() {
+        return getFieldAs(CERT_DIGEST_INFO, ObjectDigestInfo.class);
     }
 
-    public void setTargetGroup(GeneralName targetGroup) {
-        setFieldAs(TARGET_GROUP, targetGroup);
+    public void setCerttDigestInfo(ObjectDigestInfo certDigestInfo) {
+        setFieldAs(CERT_DIGEST_INFO, certDigestInfo);
     }
 }

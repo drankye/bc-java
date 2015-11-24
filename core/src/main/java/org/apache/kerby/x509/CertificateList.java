@@ -19,9 +19,8 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Any;
+import org.apache.kerby.asn1.type.Asn1BitString;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
@@ -36,12 +35,14 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * </pre>
  */
 public class CertificateList extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int TBS_CERT_LIST = 0;
+    private static final int SIGNATURE_ALGORITHMS = 1;
+    private static final int SIGNATURE_VALUE = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(TBS_CERT_LIST, -1, TBSCertList.class),
+        new Asn1FieldInfo(SIGNATURE_ALGORITHMS, -1, AlgorithmIdentifier.class),
+        new Asn1FieldInfo(SIGNATURE_VALUE, -1, Asn1BitString.class)
     };
 
     public CertificateList() {
@@ -49,14 +50,26 @@ public class CertificateList extends Asn1SequenceType {
     }
 
     public TBSCertList getTBSCertList() {
-        return null;
+        return getFieldAs(TBS_CERT_LIST, TBSCertList.class);
+    }
+
+    public void setTBSCertList(TBSCertList tbsCertList) {
+        setFieldAs(TBS_CERT_LIST, tbsCertList);
     }
 
     public AlgorithmIdentifier getSignatureAlgorithm() {
-        return null;
+        return getFieldAs(SIGNATURE_ALGORITHMS, AlgorithmIdentifier.class);
     }
 
-    public byte[] getSignature() {
-        return null;
+    public void setSignatureAlgorithms(AlgorithmIdentifier signatureAlgorithms) {
+        setFieldAs(SIGNATURE_ALGORITHMS, signatureAlgorithms);
+    }
+
+    public Asn1BitString getSignature() {
+        return getFieldAs(SIGNATURE_VALUE, Asn1BitString.class);
+    }
+
+    public void setSignatureValue(Asn1BitString signatureValue) {
+        setFieldAs(SIGNATURE_VALUE, signatureValue);
     }
 }

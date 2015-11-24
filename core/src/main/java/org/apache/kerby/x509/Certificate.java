@@ -1,14 +1,27 @@
+/**
+ *  Licensed to the Apache Software Foundation (ASF) under one
+ *  or more contributor license agreements.  See the NOTICE file
+ *  distributed with this work for additional information
+ *  regarding copyright ownership.  The ASF licenses this file
+ *  to you under the Apache License, Version 2.0 (the
+ *  "License"); you may not use this file except in compliance
+ *  with the License.  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing,
+ *  software distributed under the License is distributed on an
+ *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *  KIND, either express or implied.  See the License for the
+ *  specific language governing permissions and limitations
+ *  under the License.
+ *
+ */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Any;
+import org.apache.kerby.asn1.type.Asn1BitString;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.TBSCertificate;
-import org.bouncycastle.asn1.x509.Time;
 
 /**
  * <pre>
@@ -20,12 +33,14 @@ import org.bouncycastle.asn1.x509.Time;
  * </pre>
  */
 public class Certificate extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int TBS_CERTIFICATE = 0;
+    private static final int SIGNATURE_ALGORITHM = 1;
+    private static final int SIGNATURE = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(TBS_CERTIFICATE, -1, TBSCertificate.class),
+        new Asn1FieldInfo(SIGNATURE_ALGORITHM, -1, AlgorithmIdentifier.class),
+        new Asn1FieldInfo(SIGNATURE, -1, Asn1BitString.class)
     };
 
     public Certificate() {
@@ -33,46 +48,26 @@ public class Certificate extends Asn1SequenceType {
     }
 
     public TBSCertificate getTBSCertificate() {
-        return null;
+        return getFieldAs(TBS_CERTIFICATE, TBSCertificate.class);
     }
 
-    public int getVersion() {
-        return -1;
-    }
-
-    public int getVersionNumber() {
-        return -1;
-    }
-
-    public int getSerialNumber() {
-        return -1;
-    }
-
-    public X500Name getIssuer() {
-        return null;
-    }
-
-    public Time getStartDate() {
-        return null;
-    }
-
-    public Time getEndDate() {
-        return null;
-    }
-
-    public X500Name getSubject() {
-        return null;
-    }
-
-    public SubjectPublicKeyInfo getSubjectPublicKeyInfo() {
-        return null;
+    public void setTbsCertificate(TBSCertificate tbsCertificate) {
+        setFieldAs(TBS_CERTIFICATE, tbsCertificate);
     }
 
     public AlgorithmIdentifier getSignatureAlgorithm() {
-        return null;
+        return getFieldAs(SIGNATURE_ALGORITHM, AlgorithmIdentifier.class);
     }
 
-    public byte[] getSignature() {
-        return null;
+    public void setSignatureAlgorithm(AlgorithmIdentifier signatureAlgorithm) {
+        setFieldAs(SIGNATURE_ALGORITHM, signatureAlgorithm);
+    }
+
+    public Asn1BitString getSignature() {
+        return getFieldAs(SIGNATURE, Asn1BitString.class);
+    }
+
+    public void setSignature(Asn1BitString signature) {
+        setFieldAs(SIGNATURE, signature);
     }
 }

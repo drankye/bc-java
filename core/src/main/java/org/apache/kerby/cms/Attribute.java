@@ -22,7 +22,7 @@ package org.apache.kerby.cms;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
-import org.apache.kerby.asn1.type.Asn1Set;
+import org.apache.kerby.x509.AttributeValues;
 
 /**
  * <a href="http://tools.ietf.org/html/rfc5652#page-14">RFC 5652</a>:
@@ -43,10 +43,26 @@ public class Attribute extends Asn1SequenceType {
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
         new Asn1FieldInfo(ATTR_TYPE, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(ATTR_VALUES, Asn1Set.class),
+        new Asn1FieldInfo(ATTR_VALUES, AttributeValues.class),
     };
 
     public Attribute() {
         super(fieldInfos);
+    }
+
+    public Asn1ObjectIdentifier getAttrType() {
+        return getFieldAs(ATTR_TYPE, Asn1ObjectIdentifier.class);
+    }
+
+    public void setAttrType(Asn1ObjectIdentifier attrType) {
+        setFieldAs(ATTR_TYPE, attrType);
+    }
+
+    public AttributeValues getAttrValues() {
+        return getFieldAs(ATTR_VALUES, AttributeValues.class);
+    }
+
+    public void setAttrValues(AttributeValues values) {
+        setFieldAs(ATTR_VALUES, values);
     }
 }

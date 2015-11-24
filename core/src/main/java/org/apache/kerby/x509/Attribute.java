@@ -45,12 +45,19 @@ public class Attribute extends Asn1SequenceType {
         super(fieldInfos);
     }
 
+    public Asn1ObjectIdentifier getAttrType() {
+        return getFieldAs(ATTR_TYPE, Asn1ObjectIdentifier.class);
+    }
 
-    public ASN1ObjectIdentifier getAttrType() {
-        return null;
+    public void setAttrType(Asn1ObjectIdentifier attrType) {
+        setFieldAs(ATTR_TYPE, attrType);
     }
 
     public AttributeValues getAttrValues() {
-        return null;
+        return getFieldAs(ATTR_VALUES, AttributeValues.class);
+    }
+
+    public void setAttrValues(AttributeValues attrValues) {
+        setFieldAs(ATTR_VALUES, attrValues);
     }
 }

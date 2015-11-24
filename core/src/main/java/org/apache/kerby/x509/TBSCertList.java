@@ -19,24 +19,10 @@
  */
 package org.apache.kerby.x509;
 
-import java.util.Enumeration;
-import java.util.NoSuchElementException;
-
-import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
+import org.apache.kerby.asn1.type.Asn1Integer;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1GeneralizedTime;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1TaggedObject;
-import org.bouncycastle.asn1.ASN1UTCTime;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.DERTaggedObject;
-import org.bouncycastle.asn1.x500.X500Name;
+import org.apache.kerby.cms.Name;
 
 /**
  * Ref. RFC-2459
@@ -61,47 +47,81 @@ import org.bouncycastle.asn1.x500.X500Name;
  */
 public class TBSCertList extends Asn1SequenceType {
 
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int VERSION = 0;
+    private static final int SIGNATURE = 1;
+    private static final int ISSUER = 2;
+    private static final int THIS_UPDATA = 3;
+    private static final int NEXT_UPDATE = 4;
+    private static final int REVOKED_CERTIFICATES = 5;
+    private static final int CRL_EXTENSIONS = 6;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(VERSION, -1, Asn1Integer.class),
+        new Asn1FieldInfo(SIGNATURE, -1, AlgorithmIdentifier.class),
+        new Asn1FieldInfo(ISSUER, -1, Name.class),
+        new Asn1FieldInfo(THIS_UPDATA, -1, Time.class),
+        new Asn1FieldInfo(NEXT_UPDATE, -1, Time.class),
+        new Asn1FieldInfo(REVOKED_CERTIFICATES, -1, RevokedCertificates.class),
+        new Asn1FieldInfo(CRL_EXTENSIONS, -1, Extensions.class)
     };
 
     public TBSCertList() {
         super(fieldInfos);
     }
 
-    public int getVersion() {
-        return -1;
+    public Asn1Integer getVersion() {
+        return getFieldAs(VERSION, Asn1Integer.class);
+    }
+
+    public void setVersion(Asn1Integer version) {
+        setFieldAs(VERSION, version);
     }
 
     public AlgorithmIdentifier getSignature() {
-        return null;
+        return getFieldAs(SIGNATURE, AlgorithmIdentifier.class);
     }
 
-    public X500Name getIssuer() {
-        return null;
+    public void setSignature(AlgorithmIdentifier signature) {
+        setFieldAs(SIGNATURE, signature);
+    }
+
+    public Name getIssuer() {
+        return getFieldAs(ISSUER, Name.class);
+    }
+
+    public void setIssuer(Name issuer) {
+        setFieldAs(ISSUER, issuer);
     }
 
     public Time getThisUpdate() {
-        return null;
+        return getFieldAs(THIS_UPDATA, Time.class);
+    }
+
+    public void setThisUpdata(Time thisUpdata) {
+        setFieldAs(THIS_UPDATA, thisUpdata);
     }
 
     public Time getNextUpdate() {
-        return null;
+        return getFieldAs(NEXT_UPDATE, Time.class);
+    }
+
+    public void setNextUpdate(Time nextUpdate) {
+        setFieldAs(NEXT_UPDATE, nextUpdate);
     }
 
     public RevokedCertificates getRevokedCertificates() {
-        return null;
+        return getFieldAs(REVOKED_CERTIFICATES, RevokedCertificates.class);
     }
 
-    public Enumeration getRevokedCertificateEnumeration() {
-        return null;
+    public void setRevokedCertificates(RevokedCertificates revokedCertificates) {
+        setFieldAs(REVOKED_CERTIFICATES, revokedCertificates);
     }
 
     public Extensions getCrlExtensions() {
-        return null;
+        return getFieldAs(CRL_EXTENSIONS, Extensions.class);
+    }
+
+    public void setCrlExtensions(Extensions crlExtensions) {
+        setFieldAs(CRL_EXTENSIONS, crlExtensions);
     }
 }

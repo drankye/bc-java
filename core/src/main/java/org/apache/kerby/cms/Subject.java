@@ -17,10 +17,30 @@
  *  under the License.
  *
  */
-package org.apache.kerby.x509;
+package org.apache.kerby.cms;
 
-import org.apache.kerby.asn1.type.Asn1SequenceOf;
+import org.apache.kerby.asn1.type.Asn1Choice;
+import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.x509.GeneralNames;
+import org.apache.kerby.x509.IssuerSerial;
 
-public class Extensions extends Asn1SequenceOf<Extension> {
+/**
+ * subject CHOICE {
+ * baseCertificateID [0] IssuerSerial,
+ * -- associated with a Public Key Certificate
+ * subjectName [1] GeneralNames },
+ * -- associated with a name
+ */
+public class Subject extends Asn1Choice{
+    private static final int BASE_CERTIFICATE_ID = 0;
+    private static final int SUBJECT_NAME = 1;
 
+    static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
+            new Asn1FieldInfo(BASE_CERTIFICATE_ID, -1, IssuerSerial.class),
+            new Asn1FieldInfo(SUBJECT_NAME, -1, GeneralNames.class)
+    };
+
+    public Subject() {
+        super(fieldInfos);
+    }
 }

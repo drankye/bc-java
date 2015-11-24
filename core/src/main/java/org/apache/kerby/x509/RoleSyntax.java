@@ -19,19 +19,8 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
-import org.bouncycastle.asn1.ASN1Encodable;
-import org.bouncycastle.asn1.ASN1EncodableVector;
-import org.bouncycastle.asn1.ASN1Object;
-import org.bouncycastle.asn1.ASN1Primitive;
-import org.bouncycastle.asn1.ASN1Sequence;
-import org.bouncycastle.asn1.ASN1String;
-import org.bouncycastle.asn1.ASN1TaggedObject;
-import org.bouncycastle.asn1.DERSequence;
-import org.bouncycastle.asn1.DERTaggedObject;
 
 /**
  *Ref. RFC3281
@@ -43,12 +32,12 @@ import org.bouncycastle.asn1.DERTaggedObject;
  * </pre>
  */
 public class RoleSyntax extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int ROLE_AUTHORITY = 0;
+    private static final int ROLE_NAME = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(ROLE_AUTHORITY, -1, GeneralNames.class),
+        new Asn1FieldInfo(ROLE_NAME, -1, GeneralName.class)
     };
 
     public RoleSyntax() {
@@ -56,10 +45,18 @@ public class RoleSyntax extends Asn1SequenceType {
     }
 
     public GeneralNames getRoleAuthority() {
-        return null;
+        return getFieldAs(ROLE_AUTHORITY, GeneralNames.class);
+    }
+
+    public void setRoleAuthority(GeneralNames roleAuthority) {
+        setFieldAs(ROLE_AUTHORITY, roleAuthority);
     }
 
     public GeneralName getRoleName() {
-        return null;
+        return getFieldAs(ROLE_NAME, GeneralName.class);
+    }
+
+    public void setRoleName(GeneralName roleName) {
+        setFieldAs(ROLE_NAME, roleName);
     }
 }

@@ -36,23 +36,31 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * </pre>
  */
 public class PolicyConstraints extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int REQUIRE_EXPLICIT_POLICY = 0;
+    private static final int INHIBIT_POLICY_MAPPING = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1Integer.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Integer.class)
+        new Asn1FieldInfo(REQUIRE_EXPLICIT_POLICY, -1, Asn1Integer.class),
+        new Asn1FieldInfo(INHIBIT_POLICY_MAPPING, -1, Asn1Integer.class)
     };
 
     public PolicyConstraints() {
         super(fieldInfos);
     }
 
-    public long getRequireExplicitPolicyMapping() {
-        return -1;
+    public Asn1Integer getRequireExplicitPolicy() {
+        return getFieldAs(REQUIRE_EXPLICIT_POLICY, Asn1Integer.class);
     }
 
-    public long getInhibitPolicyMapping() {
-        return -1;
+    public void setRequireExplicitPolicy(Asn1Integer requireExplicitPolicy) {
+        setFieldAs(REQUIRE_EXPLICIT_POLICY, requireExplicitPolicy);
+    }
+
+    public Asn1Integer getInhibitPolicyMapping() {
+        return getFieldAs(INHIBIT_POLICY_MAPPING, Asn1Integer.class);
+    }
+
+    public void setInhibitPolicyMapping(Asn1Integer inhibitPolicyMapping) {
+        setFieldAs(INHIBIT_POLICY_MAPPING, inhibitPolicyMapping);
     }
 }

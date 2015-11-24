@@ -19,9 +19,8 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Any;
+import org.apache.kerby.asn1.type.Asn1BitString;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
@@ -35,12 +34,14 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * </pre>
  */
 public class IssuerSerial extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int ISSUER = 0;
+    private static final int SERIAL = 1;
+    private static final int ISSUER_UID = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(ISSUER, -1, GeneralNames.class),
+        new Asn1FieldInfo(SERIAL, -1, CertificateSerialNumber.class),
+        new Asn1FieldInfo(ISSUER_UID, -1, Asn1BitString.class)
     };
 
     public IssuerSerial() {
@@ -48,14 +49,26 @@ public class IssuerSerial extends Asn1SequenceType {
     }
 
     public GeneralNames getIssuer() {
-        return null;
+        return getFieldAs(ISSUER, GeneralNames.class);
     }
 
-    public int getSerial() {
-        return -1;
+    public void setIssuer(GeneralNames issuer) {
+        setFieldAs(ISSUER, issuer);
     }
 
-    public byte[] getIssuerUID() {
-        return null;
+    public CertificateSerialNumber getSerial() {
+        return getFieldAs(SERIAL, CertificateSerialNumber.class);
+    }
+
+    public void setSerial(CertificateSerialNumber serial) {
+        setFieldAs(SERIAL, serial);
+    }
+
+    public Asn1BitString getIssuerUID() {
+        return getFieldAs(ISSUER_UID, Asn1BitString.class);
+    }
+
+    public void setIssuerUID(Asn1BitString issuerUID) {
+        setFieldAs(ISSUER_UID, issuerUID);
     }
 }

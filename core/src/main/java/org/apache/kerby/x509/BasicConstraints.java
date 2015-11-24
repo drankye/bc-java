@@ -19,9 +19,9 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Any;
+import org.apache.kerby.asn1.type.Asn1Boolean;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
+import org.apache.kerby.asn1.type.Asn1Integer;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 import java.math.BigInteger;
@@ -35,12 +35,12 @@ import java.math.BigInteger;
  * </pre>
  */
 public class BasicConstraints extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int CA = 0;
+    private static final int PATH_LEN_CONSTRAINT = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(CA, -1, Asn1Boolean.class),
+        new Asn1FieldInfo(PATH_LEN_CONSTRAINT, -1, Asn1Integer.class)
     };
 
     public BasicConstraints() {
@@ -51,7 +51,19 @@ public class BasicConstraints extends Asn1SequenceType {
         return false;
     }
 
+    public boolean getCA() {
+        return getFieldAs(CA, Asn1Boolean.class).getValue();
+    }
+
+    public void setCA(Asn1Boolean isCA) {
+        setFieldAs(CA, isCA);
+    }
+
     public BigInteger getPathLenConstraint() {
-        return null;
+        return getFieldAs(PATH_LEN_CONSTRAINT, Asn1Integer.class).getValue();
+    }
+
+    public void setPathLenConstraint(Asn1Integer pathLenConstraint) {
+        setFieldAs(PATH_LEN_CONSTRAINT, pathLenConstraint);
     }
 }

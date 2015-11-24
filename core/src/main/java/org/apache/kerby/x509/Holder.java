@@ -19,9 +19,7 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
@@ -39,31 +37,41 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * </pre>
  */
 public class Holder extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int BASE_CERTIFICATE_ID = 0;
+    private static final int ENTITY_NAME = 1;
+    private static final int OBJECT_DIGEST_INFO = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(BASE_CERTIFICATE_ID, -1, IssuerSerial.class),
+        new Asn1FieldInfo(ENTITY_NAME, -1, GeneralNames.class),
+        new Asn1FieldInfo(OBJECT_DIGEST_INFO, -1, ObjectDigestInfo.class)
     };
 
     public Holder() {
         super(fieldInfos);
     }
 
-    public int getVersion() {
-        return -1;
+    public IssuerSerial getBaseCertificateID() {
+        return getFieldAs(BASE_CERTIFICATE_ID, IssuerSerial.class);
     }
 
-    public IssuerSerial getBaseCertificateID() {
-        return null;
+    public void setBaseCertificateId(IssuerSerial baseCertificateId) {
+        setFieldAs(BASE_CERTIFICATE_ID, baseCertificateId);
     }
 
     public GeneralNames getEntityName() {
-        return null;
+        return getFieldAs(ENTITY_NAME, GeneralNames.class);
+    }
+
+    public void setEntityName(GeneralNames entityName) {
+        setFieldAs(ENTITY_NAME, entityName);
     }
 
     public ObjectDigestInfo getObjectDigestInfo() {
-        return null;
+        return getFieldAs(OBJECT_DIGEST_INFO, ObjectDigestInfo.class);
+    }
+
+    public void setObjectDigestInfo(ObjectDigestInfo objectDigestInfo) {
+        setFieldAs(OBJECT_DIGEST_INFO, objectDigestInfo);
     }
 }

@@ -21,9 +21,7 @@ package org.apache.kerby.cms;
 
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
-import org.bouncycastle.asn1.ASN1Integer;
-import org.bouncycastle.asn1.cms.ContentInfo;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.apache.kerby.x509.AlgorithmIdentifier;
 
 /** 
  * RFC 3274: CMS Compressed Data.
@@ -37,23 +35,43 @@ import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
  * </pre>
  */
 public class CompressedData extends Asn1SequenceType {
-    private ASN1Integer           version;
-    private AlgorithmIdentifier  compressionAlgorithm;
-    private ContentInfo encapContentInfo;
 
-    public CompressedData(Asn1FieldInfo[] tags) {
-        super(tags);
+    private static final int VERSION = 0;
+    private static final int COMPRESSION_ALGORITHM = 1;
+    private static final int ENCAP_CONTENT_INFO = 2;
+
+    static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
+            new Asn1FieldInfo(VERSION, -1, CMSVersion.class),
+            new Asn1FieldInfo(COMPRESSION_ALGORITHM, -1, AlgorithmIdentifier.class),
+            new Asn1FieldInfo(ENCAP_CONTENT_INFO, -1, EncapsulatedContentInfo.class)
+    };
+
+    public CompressedData() {
+        super(fieldInfos);
     }
 
-    public ASN1Integer getVersion() {
-        return version;
+    public CMSVersion getVersion() {
+        return getFieldAs(VERSION, CMSVersion.class);
     }
 
-    public AlgorithmIdentifier getAlgorithmIdentifier() {
-        return compressionAlgorithm;
+    public void setVersion(CMSVersion version) {
+        setFieldAs(VERSION, version);
     }
 
-    public ContentInfo getEncapContentInfo() {
-        return encapContentInfo;
+    public AlgorithmIdentifier getCompressionAlgorithm() {
+        return getFieldAs(COMPRESSION_ALGORITHM, AlgorithmIdentifier.class);
     }
+
+    public void setCompressionAlgorithm(AlgorithmIdentifier compressionAlgorithm) {
+        setFieldAs(COMPRESSION_ALGORITHM, compressionAlgorithm);
+    }
+
+    public EncapsulatedContentInfo getEncapContentInfo() {
+        return getFieldAs(ENCAP_CONTENT_INFO, EncapsulatedContentInfo.class);
+    }
+
+    public void setEncapContentInfo(EncapsulatedContentInfo encapContentInfo) {
+        setFieldAs(ENCAP_CONTENT_INFO, encapContentInfo);
+    }
+
 }

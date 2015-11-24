@@ -49,7 +49,4 @@ public class CertificateChoices extends Asn1Choice {
     public CertificateChoices() {
         super(fieldInfos);
     }
-
-    //TODO
-
 }

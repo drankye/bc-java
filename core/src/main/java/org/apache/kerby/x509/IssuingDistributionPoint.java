@@ -1,11 +1,27 @@
+/**
+ *  Licensed to the Apache Software Foundation (ASF) under one
+ *  or more contributor license agreements.  See the NOTICE file
+ *  distributed with this work for additional information
+ *  regarding copyright ownership.  The ASF licenses this file
+ *  to you under the Apache License, Version 2.0 (the
+ *  "License"); you may not use this file except in compliance
+ *  with the License.  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing,
+ *  software distributed under the License is distributed on an
+ *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *  KIND, either express or implied.  See the License for the
+ *  specific language governing permissions and limitations
+ *  under the License.
+ *
+ */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Any;
+import org.apache.kerby.asn1.type.Asn1Boolean;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
-import org.bouncycastle.asn1.x509.DistributionPointName;
-import org.bouncycastle.asn1.x509.ReasonFlags;
 
 /**
  * <pre>
@@ -19,39 +35,71 @@ import org.bouncycastle.asn1.x509.ReasonFlags;
  * </pre>
  */
 public class IssuingDistributionPoint extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int DISTRIBUTION_POINT = 0;
+    private static final int ONLY_CONTAINS_USER_CERTS = 1;
+    private static final int ONLY_CONTAINS_CA_CERTS = 2;
+    private static final int ONLY_SOME_REASONS = 3;
+    private static final int INDIRECT_CRL = 4;
+    private static final int ONLY_CONTAINS_ATTRIBUTE_CERTS = 5;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(DISTRIBUTION_POINT, -1, DistributionPointName.class),
+        new Asn1FieldInfo(ONLY_CONTAINS_USER_CERTS, -1, Asn1Boolean.class),
+        new Asn1FieldInfo(ONLY_CONTAINS_CA_CERTS, -1, Asn1Boolean.class),
+        new Asn1FieldInfo(ONLY_SOME_REASONS, -1, ReasonFlags.class),
+        new Asn1FieldInfo(INDIRECT_CRL, -1, Asn1Boolean.class),
+        new Asn1FieldInfo(ONLY_CONTAINS_ATTRIBUTE_CERTS, -1, Asn1Boolean.class)
     };
 
     public IssuingDistributionPoint() {
         super(fieldInfos);
     }
 
-    public boolean onlyContainsUserCerts() {
-        return false;
-    }
-
-    public boolean onlyContainsCACerts() {
-        return false;
-    }
-
-    public boolean isIndirectCRL() {
-        return false;
-    }
-
-    public boolean onlyContainsAttributeCerts() {
-        return false;
-    }
-
     public DistributionPointName getDistributionPoint() {
-        return null;
+        return getFieldAs(DISTRIBUTION_POINT, DistributionPointName.class);
+    }
+
+    public void setDistributionPoint(DistributionPointName distributionPoint) {
+        setFieldAs(DISTRIBUTION_POINT, distributionPoint);
+    }
+
+    public boolean getOnlyContainsUserCerts() {
+        return getFieldAs(ONLY_CONTAINS_USER_CERTS, Asn1Boolean.class).getValue();
+    }
+
+    public void setOnlyContainsUserCerts(boolean onlyContainsUserCerts) {
+        setFieldAs(ONLY_CONTAINS_USER_CERTS, new Asn1Boolean(onlyContainsUserCerts));
+    }
+
+    public boolean getOnlyContainsCACerts() {
+        return getFieldAs(ONLY_CONTAINS_CA_CERTS, Asn1Boolean.class).getValue();
+    }
+
+    public void setOnlyContainsCaCerts(boolean onlyContainsCaCerts) {
+        setFieldAs(ONLY_CONTAINS_CA_CERTS, new Asn1Boolean(onlyContainsCaCerts));
     }
 
     public ReasonFlags getOnlySomeReasons() {
-        return null;
+        return getFieldAs(ONLY_SOME_REASONS, ReasonFlags.class);
+    }
+
+    public void setOnlySomeReasons(ReasonFlags onlySomeReasons) {
+        setFieldAs(ONLY_SOME_REASONS, onlySomeReasons);
+    }
+
+    public boolean getIndirectCRL() {
+        return getFieldAs(INDIRECT_CRL, Asn1Boolean.class).getValue();
+    }
+
+    public void setIndirectCrl(boolean indirectCrl) {
+        setFieldAs(INDIRECT_CRL, new Asn1Boolean(indirectCrl));
+    }
+
+    public boolean getOnlyContainsAttributeCerts() {
+        return getFieldAs(ONLY_CONTAINS_ATTRIBUTE_CERTS, Asn1Boolean.class).getValue();
+    }
+
+    public void setOnlyContainsAttributeCerts(boolean onlyContainsAttributeCerts) {
+        setFieldAs(ONLY_CONTAINS_ATTRIBUTE_CERTS, new Asn1Boolean(onlyContainsAttributeCerts));
     }
 }

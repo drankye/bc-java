@@ -22,7 +22,6 @@ package org.apache.kerby.cms;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1OctetString;
-import org.apache.kerby.asn1.type.Asn1Sequence;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**

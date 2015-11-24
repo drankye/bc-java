@@ -22,7 +22,6 @@ package org.apache.kerby.x509;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 
 /**
  * The AccessDescription object.
@@ -48,11 +47,19 @@ public class AccessDescription extends Asn1SequenceType {
         super(fieldInfos);
     }
 
-    public ASN1ObjectIdentifier getAccessMethod() {
-        return null;
+    public Asn1ObjectIdentifier getAccessMethod() {
+        return getFieldAs(ACCESS_METHOD, Asn1ObjectIdentifier.class);
+    }
+
+    public void setAccessMethod(Asn1ObjectIdentifier accessMethod) {
+        setFieldAs(ACCESS_METHOD, accessMethod);
     }
 
     public GeneralName getAccessLocation() {
-        return null;
+        return getFieldAs(ACCESS_LOCATION, GeneralName.class);
+    }
+
+    public void setAccessLocation(GeneralName accessLocation) {
+        setFieldAs(ACCESS_LOCATION, accessLocation);
     }
 }

@@ -19,9 +19,7 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
@@ -40,23 +38,31 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * @see PolicyInformation
  */
 public class NoticeReference extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int ORGANIZATION = 0;
+    private static final int NOTICE_NUMBERS = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(ORGANIZATION, -1, DisplayText.class),
+        new Asn1FieldInfo(NOTICE_NUMBERS, -1, NoticeNumbers.class)
     };
 
     public NoticeReference() {
         super(fieldInfos);
     }
 
-   public DisplayText getOrganization() {
-       return null;
-   }
-   
-   public int[] getNoticeNumbers() {
-       return null;
-   }
+    public DisplayText getOrganization() {
+        return getFieldAs(ORGANIZATION, DisplayText.class);
+    }
+
+    public void setOrganization(DisplayText organization) {
+        setFieldAs(ORGANIZATION, organization);
+    }
+
+    public NoticeNumbers getNoticeNumbers() {
+        return getFieldAs(NOTICE_NUMBERS, NoticeNumbers.class);
+    }
+
+    public void setNoticeNumbers(NoticeNumbers noticeNumbers) {
+        setFieldAs(NOTICE_NUMBERS, noticeNumbers);
+    }
 }

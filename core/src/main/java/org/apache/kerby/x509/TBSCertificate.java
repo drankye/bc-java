@@ -1,10 +1,29 @@
+/**
+ *  Licensed to the Apache Software Foundation (ASF) under one
+ *  or more contributor license agreements.  See the NOTICE file
+ *  distributed with this work for additional information
+ *  regarding copyright ownership.  The ASF licenses this file
+ *  to you under the Apache License, Version 2.0 (the
+ *  "License"); you may not use this file except in compliance
+ *  with the License.  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing,
+ *  software distributed under the License is distributed on an
+ *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *  KIND, either express or implied.  See the License for the
+ *  specific language governing permissions and limitations
+ *  under the License.
+ *
+ */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.*;
-import org.bouncycastle.asn1.x500.X500Name;
-import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
-import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
-import org.bouncycastle.asn1.x509.Time;
+import org.apache.kerby.asn1.type.Asn1BitString;
+import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.Asn1Integer;
+import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.cms.Name;
 
 /**
  * <pre>
@@ -23,63 +42,112 @@ import org.bouncycastle.asn1.x509.Time;
  * </pre>
  */
 public class TBSCertificate extends Asn1SequenceType {
+
     private static final int VERSION = 0;
     private static final int SERIAL_NUMBER = 1;
+    private static final int SIGNATURE = 2;
+    private static final int ISSUER = 3;
+    private static final int VALIDITY = 4;
+    private static final int SUBJECT = 5;
+    private static final int SUBJECT_PUBLIC_KEY_INFO = 6;
+    private static final int ISSUER_UNIQUE_ID = 7;
+    private static final int SUBJECT_UNIQUE_ID = 8;
+    private static final int EXTENSIONS = 9;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(VERSION, -1, Asn1Integer.class),
-        new Asn1FieldInfo(SERIAL_NUMBER, -1, Asn1Integer.class)
+            new Asn1FieldInfo(VERSION, -1, Asn1Integer.class),
+            new Asn1FieldInfo(SERIAL_NUMBER, -1, CertificateSerialNumber.class),
+            new Asn1FieldInfo(SIGNATURE, -1, AlgorithmIdentifier.class),
+            new Asn1FieldInfo(ISSUER, -1, Name.class),
+            new Asn1FieldInfo(VALIDITY, -1, AttCertValidityPeriod.class),
+            new Asn1FieldInfo(SUBJECT, -1, Name.class),
+            new Asn1FieldInfo(SUBJECT_PUBLIC_KEY_INFO, -1, SubjectPublicKeyInfo.class),
+            new Asn1FieldInfo(ISSUER_UNIQUE_ID, -1, Asn1BitString.class),
+            new Asn1FieldInfo(SUBJECT_UNIQUE_ID, -1, Asn1BitString.class),
+            new Asn1FieldInfo(EXTENSIONS, -1, Extensions.class)
     };
 
     public TBSCertificate() {
         super(fieldInfos);
     }
 
-    public int getVersionNumber() {
-        return -1;
-    }
-
     public int getVersion() {
-        return -1;
+        return getFieldAsInteger(VERSION);
     }
 
-    public int getSerialNumber() {
-        return -1;
+    public void setVersion(int version) {
+        setFieldAsInt(VERSION, version);
+    }
+
+    public CertificateSerialNumber getSerialNumber() {
+        return getFieldAs(SERIAL_NUMBER, CertificateSerialNumber.class);
+    }
+
+    public void setSerialNumber(CertificateSerialNumber certificateSerialNumber) {
+        setFieldAs(SERIAL_NUMBER, certificateSerialNumber);
     }
 
     public AlgorithmIdentifier getSignature() {
-        return null;
+        return getFieldAs(SIGNATURE, AlgorithmIdentifier.class);
     }
 
-    public X500Name getIssuer() {
-        return null;
+    public void setSignature(AlgorithmIdentifier signature) {
+        setFieldAs(SIGNATURE, signature);
     }
 
-    public Time getStartDate() {
-        return null;
+    public Name getIssuer() {
+        return getFieldAs(ISSUER, Name.class);
     }
 
-    public Time getEndDate() {
-        return null;
+    public void setIssuer(Name attCertIssuer) {
+        setFieldAs(ISSUER, attCertIssuer);
     }
 
-    public X500Name getSubject() {
-        return null;
+    public AttCertValidityPeriod getValidity() {
+        return getFieldAs(VALIDITY, AttCertValidityPeriod.class);
+    }
+
+    public void setValidity(AttCertValidityPeriod validity) {
+        setFieldAs(VALIDITY, validity);
+    }
+
+    public Name getSubject() {
+        return getFieldAs(SUBJECT, Name.class);
+    }
+
+    public void setSubject(Name subject) {
+        setFieldAs(SUBJECT, subject);
     }
 
     public SubjectPublicKeyInfo getSubjectPublicKeyInfo() {
-        return null;
+        return getFieldAs(SUBJECT_PUBLIC_KEY_INFO, SubjectPublicKeyInfo.class);
     }
 
-    public byte[] getIssuerUniqueId() {
-        return null;
+    public void setSubjectPublicKeyInfo(SubjectPublicKeyInfo subjectPublicKeyInfo) {
+        setFieldAs(SUBJECT_PUBLIC_KEY_INFO, subjectPublicKeyInfo);
+    }
+
+    public byte[] getIssuerUniqueID() {
+        return getFieldAs(ISSUER_UNIQUE_ID, Asn1BitString.class).getValue();
+    }
+
+    public void setIssuerUniqueId(byte[] issuerUniqueId) {
+        setFieldAs(ISSUER_UNIQUE_ID, new Asn1BitString(issuerUniqueId));
     }
 
     public byte[] getSubjectUniqueId() {
-        return null;
+        return getFieldAs(ISSUER_UNIQUE_ID, Asn1BitString.class).getValue();
+    }
+
+    public void setSubjectUniqueId(byte[] issuerUniqueId) {
+        setFieldAs(ISSUER_UNIQUE_ID, new Asn1BitString(issuerUniqueId));
     }
 
     public Extensions getExtensions() {
-        return null;
+        return getFieldAs(EXTENSIONS, Extensions.class);
+    }
+
+    public void setExtensions(Extensions extensions) {
+        setFieldAs(EXTENSIONS, extensions);
     }
 }

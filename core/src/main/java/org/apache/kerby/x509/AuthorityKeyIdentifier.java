@@ -19,9 +19,7 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 import java.math.BigInteger;
@@ -41,27 +39,42 @@ import java.math.BigInteger;
  *
  */
 public class AuthorityKeyIdentifier extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int KEY_IDENTIFIER = 0;
+    private static final int AUTHORITY_CERT_ISSUER = 1;
+    private static final int AUTHORITY_CERT_SERIAL_NUMBER = 2;
+
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(KEY_IDENTIFIER, -1, KeyIdentifier.class),
+        new Asn1FieldInfo(AUTHORITY_CERT_ISSUER, -1, GeneralNames.class),
+        new Asn1FieldInfo(AUTHORITY_CERT_SERIAL_NUMBER, -1, CertificateSerialNumber.class)
     };
 
     public AuthorityKeyIdentifier() {
         super(fieldInfos);
     }
 
-    public byte[] getKeyIdentifier() {
-        return null;
+    public KeyIdentifier getKeyIdentifier() {
+        return getFieldAs(KEY_IDENTIFIER, KeyIdentifier.class);
+    }
+
+    public void setKeyIdentifier(KeyIdentifier keyIdentifier) {
+        setFieldAs(KEY_IDENTIFIER, keyIdentifier);
     }
 
     public GeneralNames getAuthorityCertIssuer() {
-        return null;
+        return getFieldAs(AUTHORITY_CERT_ISSUER, GeneralNames.class);
+    }
+
+    public void setAuthorityCertIssuer(GeneralNames authorityCertIssuer) {
+        setFieldAs(AUTHORITY_CERT_ISSUER, authorityCertIssuer);
     }
     
-    public BigInteger getAuthorityCertSerialNumber() {
-        return null;
+    public CertificateSerialNumber getAuthorityCertSerialNumber() {
+        return getFieldAs(AUTHORITY_CERT_SERIAL_NUMBER, CertificateSerialNumber.class);
+    }
+
+    public void setAuthorityCertSerialNumber(CertificateSerialNumber authorityCertSerialNumber) {
+        setFieldAs(AUTHORITY_CERT_SERIAL_NUMBER, authorityCertSerialNumber);
     }
 }
