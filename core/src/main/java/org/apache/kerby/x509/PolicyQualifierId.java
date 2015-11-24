@@ -19,7 +19,7 @@
  */
 package org.apache.kerby.x509;
 
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 
 /**
  * PolicyQualifierId, used in the CertificatePolicies
@@ -33,7 +33,7 @@ import org.bouncycastle.asn1.ASN1ObjectIdentifier;
  *       OBJECT IDENTIFIER (id-qt-cps | id-qt-unotice)
  * </pre>
  */
-public class PolicyQualifierId extends ASN1ObjectIdentifier 
+public class PolicyQualifierId extends Asn1ObjectIdentifier
 {
    private static final String id_qt = "1.3.6.1.5.5.7.2";
 

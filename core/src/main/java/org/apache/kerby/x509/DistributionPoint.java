@@ -35,12 +35,14 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * </pre>
  */
 public class DistributionPoint extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int DISTRIBUTION_POINT = 0;
+    private static final int REASONS = 1;
+    private static final int CRL_ISSUER = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(DISTRIBUTION_POINT, -1, DistributionPointName.class),
+        new Asn1FieldInfo(REASONS, -1, ReasonFlags.class),
+        new Asn1FieldInfo(CRL_ISSUER, -1, GeneralNames.class)
     };
 
     public DistributionPoint() {
@@ -48,14 +50,26 @@ public class DistributionPoint extends Asn1SequenceType {
     }
 
     public DistributionPointName getDistributionPoint() {
-        return null;
+        return getFieldAs(DISTRIBUTION_POINT, DistributionPointName.class);
+    }
+
+    public void setDistributionPoint(DistributionPointName distributionPoint) {
+        setFieldAs(DISTRIBUTION_POINT, distributionPoint);
     }
 
     public ReasonFlags getReasons() {
-        return null;
+        return getFieldAs(REASONS, ReasonFlags.class);
+    }
+
+    public void setReasons(ReasonFlags reasons) {
+        setFieldAs(REASONS, reasons);
     }
 
     public GeneralNames getCRLIssuer() {
-        return null;
+        return getFieldAs(CRL_ISSUER, GeneralNames.class);
+    }
+
+    public void setCRLIssuer(GeneralNames crlIssuer) {
+        setFieldAs(CRL_ISSUER, crlIssuer);
     }
 }

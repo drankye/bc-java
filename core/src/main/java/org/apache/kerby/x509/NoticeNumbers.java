@@ -19,8 +19,13 @@
  */
 package org.apache.kerby.x509;
 
+import org.apache.kerby.asn1.type.Asn1Integer;
 import org.apache.kerby.asn1.type.Asn1SequenceOf;
 
-public class Extensions extends Asn1SequenceOf<Extension> {
-
+/**
+ *      noticeNumbers    SEQUENCE OF INTEGER }
+ *
+ * </pre>
+ */
+public class NoticeNumbers extends Asn1SequenceOf<Asn1Integer> {
 }

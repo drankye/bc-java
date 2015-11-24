@@ -19,8 +19,11 @@
  */
 package org.apache.kerby.cms;
 
+import org.apache.kerby.asn1.type.Asn1BitString;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.x509.AlgorithmIdentifier;
+import org.apache.kerby.x509.TBSCertificate;
 
 /**
  * an X509Certificate structure.
@@ -34,7 +37,41 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  */
 public class Certificate extends Asn1SequenceType {
 
-    public Certificate(Asn1FieldInfo[] tags) {
-        super(tags);
+    private static final int TBS_CERTIFICATE = 0;
+    private static final int SIGNATURE_ALGORITHM = 1;
+    private static final int SIGNATURE = 2;
+
+    static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
+            new Asn1FieldInfo(TBS_CERTIFICATE, -1, TBSCertificate.class),
+            new Asn1FieldInfo(SIGNATURE_ALGORITHM, -1, AlgorithmIdentifier.class),
+            new Asn1FieldInfo(SIGNATURE, -1, Asn1BitString.class)
+    };
+
+    public Certificate() {
+        super(fieldInfos);
+    }
+
+    public TBSCertificate getTBSCertificate() {
+        return getFieldAs(TBS_CERTIFICATE, TBSCertificate.class);
+    }
+
+    public void setTbsCertificate(TBSCertificate tbsCertificate) {
+        setFieldAs(TBS_CERTIFICATE, tbsCertificate);
+    }
+
+    public AlgorithmIdentifier getSignatureAlgorithm() {
+        return getFieldAs(SIGNATURE_ALGORITHM, AlgorithmIdentifier.class);
+    }
+
+    public void setSignatureAlgorithm(AlgorithmIdentifier signatureAlgorithm) {
+        setFieldAs(SIGNATURE_ALGORITHM, signatureAlgorithm);
+    }
+
+    public Asn1BitString getSignature() {
+        return getFieldAs(SIGNATURE, Asn1BitString.class);
+    }
+
+    public void setSignature(Asn1BitString signature) {
+        setFieldAs(SIGNATURE, signature);
     }
 }

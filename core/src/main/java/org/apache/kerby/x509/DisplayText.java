@@ -23,6 +23,7 @@ import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1Choice;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
+import org.apache.kerby.asn1.type.Asn1Type;
 
 /**
  * <code>DisplayText</code> class, used in
@@ -79,7 +80,19 @@ public class DisplayText extends Asn1Choice {
       super(fieldInfos);
    }
 
-   public String getString() {
-      return null;
-   }   
+   public Asn1ObjectIdentifier getAlgorithm() {
+      return getFieldAs(ALGORITHM, Asn1ObjectIdentifier.class);
+   }
+
+   public void setAlgorithm(Asn1ObjectIdentifier algorithm) {
+      setFieldAs(ALGORITHM, algorithm);
+   }
+
+   public Asn1Any getParameters() {
+      return getFieldAs(PARAMETERS, Asn1Any.class);
+   }
+
+   public void setParameters(Asn1Any parameters) {
+      setFieldAs(PARAMETERS, parameters);
+   }
 }

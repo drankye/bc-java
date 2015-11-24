@@ -19,44 +19,46 @@
  */
 package org.apache.kerby.x509;
 
+import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.Asn1Type;
 
 /**
- * Ref. RFC3280
  * <pre>
- *    PolicyMappings ::= SEQUENCE SIZE (1..MAX) OF SEQUENCE {
- *      issuerDomainPolicy      CertPolicyId,
- *      subjectDomainPolicy     CertPolicyId }
- * </pre>
+ * OtherName ::= SEQUENCE {
+ *      type-id    OBJECT IDENTIFIER,
+ *      value      [0] EXPLICIT ANY DEFINED BY type-id }
  *
+ * </pre>
  */
-public class PolicyMapping extends Asn1SequenceType {
-    private static final int ISSUER_DOMAIN_POLICY = 0;
-    private static final int SUBJECT_DOMAIN_POLICY = 1;
+public class OtherName extends Asn1SequenceType {
+    private static final int TYPE_ID = 0;
+    private static final int VALUE = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ISSUER_DOMAIN_POLICY, -1, CertPolicyId.class),
-        new Asn1FieldInfo(SUBJECT_DOMAIN_POLICY, -1, CertPolicyId.class)
+            new Asn1FieldInfo(TYPE_ID, -1, Asn1ObjectIdentifier.class),
+            new Asn1FieldInfo(VALUE, -1, Asn1Any.class)
     };
 
-    public PolicyMapping() {
+    public OtherName() {
         super(fieldInfos);
     }
 
-    public CertPolicyId getIssuerDomainPolicy() {
-        return  getFieldAs(ISSUER_DOMAIN_POLICY, CertPolicyId.class);
+    public Asn1ObjectIdentifier getTypeId() {
+        return getFieldAs(TYPE_ID, Asn1ObjectIdentifier.class);
     }
 
-    public void setIssuerDomainPolicy(CertPolicyId issuerDomainPolicy) {
-        setFieldAs(ISSUER_DOMAIN_POLICY, issuerDomainPolicy);
+    public void setTypeId(Asn1ObjectIdentifier algorithm) {
+        setFieldAs(TYPE_ID, algorithm);
     }
 
-    public CertPolicyId getSubjectDomainPolicy() {
-        return getFieldAs(SUBJECT_DOMAIN_POLICY, CertPolicyId.class);
+    public Asn1Type getOtherNameValue() {
+        return getFieldAsAny(VALUE);
     }
 
-    public void setSubjectDomainPolicy(CertPolicyId subjectDomainPolicy) {
-        setFieldAs(SUBJECT_DOMAIN_POLICY, subjectDomainPolicy);
+    public void setOtherNameValue(Asn1Type value) {
+        setFieldAsAny(VALUE, value);
     }
 }

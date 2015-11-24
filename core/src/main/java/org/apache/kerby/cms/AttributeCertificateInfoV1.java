@@ -17,39 +17,41 @@
  *  under the License.
  *
  */
-package org.apache.kerby.x509;
+package org.apache.kerby.cms;
 
-import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1BitString;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1Integer;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
-import sun.security.x509.UniqueIdentity;
+import org.apache.kerby.x509.AlgorithmIdentifier;
+import org.apache.kerby.x509.AttCertIssuer;
+import org.apache.kerby.x509.AttCertValidityPeriod;
+import org.apache.kerby.x509.Attributes;
+import org.apache.kerby.x509.CertificateSerialNumber;
+import org.apache.kerby.x509.Extensions;
 
 /**
- *
- * <pre>
- *  AttributeCertificateInfo ::= SEQUENCE {
- *       version              AttCertVersion -- version is v2,
- *       holder               Holder,
- *       issuer               AttCertIssuer,
- *       signature            AlgorithmIdentifier,
- *       serialNumber         CertificateSerialNumber,
- *       attrCertValidityPeriod   AttCertValidityPeriod,
- *       attributes           SEQUENCE OF Attribute,
- *       issuerUniqueID       UniqueIdentifier OPTIONAL,
- *       extensions           Extensions OPTIONAL
- *  }
- *
- *  AttCertVersion ::= INTEGER { v2(1) }
- *
- *  UniqueIdentifier  ::=  BIT STRING
- * </pre>
+ * AttributeCertificateInfoV1 ::= SEQUENCE {
+ * version AttCertVersionV1 DEFAULT v1,
+ * subject CHOICE {
+ * baseCertificateID [0] IssuerSerial,
+ * -- associated with a Public Key Certificate
+ * subjectName [1] GeneralNames },
+ * -- associated with a name
+ * issuer GeneralNames,
+ * signature AlgorithmIdentifier,
+ * serialNumber CertificateSerialNumber,
+ * attCertValidityPeriod AttCertValidityPeriod,
+ * attributes SEQUENCE OF Attribute,
+ * issuerUniqueID UniqueIdentifier OPTIONAL,
+ * extensions Extensions OPTIONAL }
+ * <p>
+ * AttCertVersionV1 ::= INTEGER { v1(0) }
  */
-public class AttributeCertificateInfo extends Asn1SequenceType {
+public class AttributeCertificateInfoV1 extends Asn1SequenceType{
+
     private static final int VERSION = 0;
-    private static final int HOLDER = 1;
+    private static final int SUBJECT = 1;
     private static final int ISSUER = 2;
     private static final int SIGNATURE = 3;
     private static final int SERIAL_NUMBER = 4;
@@ -59,18 +61,18 @@ public class AttributeCertificateInfo extends Asn1SequenceType {
     private static final int EXTENSIONS = 8;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(VERSION, -1, Asn1Integer.class),
-        new Asn1FieldInfo(HOLDER, -1, Holder.class),
-        new Asn1FieldInfo(ISSUER, -1, AttCertIssuer.class),
-        new Asn1FieldInfo(SIGNATURE, -1, AlgorithmIdentifier.class),
-        new Asn1FieldInfo(SERIAL_NUMBER, -1, CertificateSerialNumber.class),
-        new Asn1FieldInfo(ATTR_CERT_VALIDITY_PERIOD, -1, AttCertValidityPeriod.class),
-        new Asn1FieldInfo(ATTRIBUTES, -1, Attributes.class),
-        new Asn1FieldInfo(ISSUER_UNIQUE_ID, -1, Asn1BitString.class),
-        new Asn1FieldInfo(EXTENSIONS, -1, Extensions.class)
+            new Asn1FieldInfo(VERSION, -1, Asn1Integer.class),
+            new Asn1FieldInfo(SUBJECT, -1, Subject.class),
+            new Asn1FieldInfo(ISSUER, -1, AttCertIssuer.class),
+            new Asn1FieldInfo(SIGNATURE, -1, AlgorithmIdentifier.class),
+            new Asn1FieldInfo(SERIAL_NUMBER, -1, CertificateSerialNumber.class),
+            new Asn1FieldInfo(ATTR_CERT_VALIDITY_PERIOD, -1, AttCertValidityPeriod.class),
+            new Asn1FieldInfo(ATTRIBUTES, -1, Attributes.class),
+            new Asn1FieldInfo(ISSUER_UNIQUE_ID, -1, Asn1BitString.class),
+            new Asn1FieldInfo(EXTENSIONS, -1, Extensions.class)
     };
 
-    public AttributeCertificateInfo() {
+    public AttributeCertificateInfoV1() {
         super(fieldInfos);
     }
 
@@ -82,12 +84,12 @@ public class AttributeCertificateInfo extends Asn1SequenceType {
         setFieldAsInt(VERSION, version);
     }
 
-    public Holder getHolder() {
-        return getFieldAs(HOLDER, Holder.class);
+    public Subject getSubject() {
+        return getFieldAs(SUBJECT, Subject.class);
     }
 
-    public void setHolder(Holder holder) {
-        setFieldAs(HOLDER, holder);
+    public void setSubject(Subject subject) {
+        setFieldAs(SUBJECT, subject);
     }
 
     public AttCertIssuer getIssuer() {

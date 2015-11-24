@@ -22,6 +22,7 @@ package org.apache.kerby.cms;
 import org.apache.kerby.asn1.type.Asn1Choice;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1OctetString;
+import org.apache.kerby.x509.SubjectKeyIdentifier;
 
 /**
  * <a href="http://tools.ietf.org/html/rfc5652#section-5.3">RFC 5652</a>:
@@ -44,10 +45,26 @@ public class SignerIdentifier extends Asn1Choice {
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
         new Asn1FieldInfo(ISSUER_AND_SERIAL_NUMBER, IssuerAndSerialNumber.class),
-        new Asn1FieldInfo(SUBJECT_KEY_IDENTIFIER, Asn1OctetString.class)
+        new Asn1FieldInfo(SUBJECT_KEY_IDENTIFIER, SubjectKeyIdentifier.class)
     };
 
     public SignerIdentifier() {
         super(fieldInfos);
+    }
+
+    public IssuerAndSerialNumber getIssuerAndSerialNumber() {
+        return getFieldAs(ISSUER_AND_SERIAL_NUMBER, IssuerAndSerialNumber.class);
+    }
+
+    public void setIssuerAndSerialNumber(IssuerAndSerialNumber issuerAndSerialNumber) {
+        setFieldAs(ISSUER_AND_SERIAL_NUMBER, issuerAndSerialNumber);
+    }
+
+    public SubjectKeyIdentifier getSubjectKeyIdentifier() {
+        return getFieldAs(SUBJECT_KEY_IDENTIFIER, SubjectKeyIdentifier.class);
+    }
+
+    public void setSubjectKeyIdentifier(SubjectKeyIdentifier subjectKeyIdentifier) {
+        setFieldAs(SUBJECT_KEY_IDENTIFIER, subjectKeyIdentifier);
     }
 }

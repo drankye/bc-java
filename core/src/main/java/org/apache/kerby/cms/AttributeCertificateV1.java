@@ -19,8 +19,11 @@
  */
 package org.apache.kerby.cms;
 
+import org.apache.kerby.asn1.type.Asn1BitString;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.x509.AlgorithmIdentifier;
+import org.apache.kerby.x509.AttributeCertificateInfo;
 
 /**
  * AttributeCertificateV1 ::= SEQUENCE {
@@ -29,7 +32,41 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * signature BIT STRING }
  */
 public class AttributeCertificateV1 extends Asn1SequenceType {
+    private static final int ACI_INFO = 0;
+    private static final int SIGNATURE_ALGORITHM = 1;
+    private static final int SIGNATURE = 2;
+
+    static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
+            new Asn1FieldInfo(ACI_INFO, -1, AttributeCertificateInfoV1.class),
+            new Asn1FieldInfo(SIGNATURE_ALGORITHM, -1, AlgorithmIdentifier.class),
+            new Asn1FieldInfo(SIGNATURE, -1, Asn1BitString.class)
+    };
+
     public AttributeCertificateV1(Asn1FieldInfo[] tags) {
         super(tags);
+    }
+
+    public AttributeCertificateInfo getAcinfo() {
+        return getFieldAs(ACI_INFO, AttributeCertificateInfo.class);
+    }
+
+    public void setAciInfo(AttributeCertificateInfo aciInfo) {
+        setFieldAs(ACI_INFO, aciInfo);
+    }
+
+    public AlgorithmIdentifier getSignatureAlgorithm() {
+        return getFieldAs(SIGNATURE_ALGORITHM, AlgorithmIdentifier.class);
+    }
+
+    public void setSignatureAlgorithm(AlgorithmIdentifier signatureAlgorithm) {
+        setFieldAs(SIGNATURE_ALGORITHM, signatureAlgorithm);
+    }
+
+    public Asn1BitString getSignatureValue() {
+        return getFieldAs(SIGNATURE, Asn1BitString.class);
+    }
+
+    public void setSignatureValue(Asn1BitString signatureValue) {
+        setFieldAs(SIGNATURE, signatureValue);
     }
 }

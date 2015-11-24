@@ -19,8 +19,8 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1SequenceOf;
+import org.apache.kerby.asn1.type.Asn1Integer;
 
-public class Extensions extends Asn1SequenceOf<Extension> {
-
+public class CertificateSerialNumber extends Asn1Integer {
 }
+

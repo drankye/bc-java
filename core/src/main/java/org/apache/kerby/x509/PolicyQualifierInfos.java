@@ -21,6 +21,11 @@ package org.apache.kerby.x509;
 
 import org.apache.kerby.asn1.type.Asn1SequenceOf;
 
-public class Extensions extends Asn1SequenceOf<Extension> {
-
+/*
+ * <pre>
+ *      policyQualifiers   SEQUENCE SIZE (1..MAX) OF
+ *              PolicyQualifierInfo OPTIONAL }
+ * </pre>
+ */
+public class PolicyQualifierInfos extends Asn1SequenceOf<PolicyQualifierInfo> {
 }

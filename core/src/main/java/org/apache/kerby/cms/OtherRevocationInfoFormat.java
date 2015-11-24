@@ -23,6 +23,7 @@ import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.Asn1Type;
 
 /**
  * OtherRevocationInfoFormat ::= SEQUENCE {
@@ -41,5 +42,21 @@ public class OtherRevocationInfoFormat extends Asn1SequenceType {
 
     public OtherRevocationInfoFormat() {
         super(fieldInfos);
+    }
+
+    public Asn1ObjectIdentifier getOtherRevInfoFormat() {
+        return getFieldAs(OTHER_REV_INFO_FORMAT, Asn1ObjectIdentifier.class);
+    }
+
+    public void setOtherRevInfoFormat(Asn1ObjectIdentifier otherRevInfoFormat) {
+        setFieldAs(OTHER_REV_INFO_FORMAT, otherRevInfoFormat);
+    }
+
+    public Asn1Type getOtherRevInfo() {
+        return getFieldAsAny(OTHER_REV_INFO);
+    }
+
+    public void setOtherRevInfo(Asn1Type otherRevInfo) {
+        setFieldAsAny(OTHER_REV_INFO, otherRevInfo);
     }
 }

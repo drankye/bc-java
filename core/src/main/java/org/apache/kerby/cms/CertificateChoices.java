@@ -50,6 +50,43 @@ public class CertificateChoices extends Asn1Choice {
         super(fieldInfos);
     }
 
-    //TODO
+    public Certificate getCertificate() {
+        return getFieldAs(CERTIFICATE, Certificate.class);
+    }
 
+    public void setCertificate(Certificate certificate) {
+        setFieldAs(CERTIFICATE, certificate);
+    }
+
+    public ExtendedCertificate getExtendedCertificate() {
+        return getFieldAs(EXTENDED_CERTIFICATE, ExtendedCertificate.class);
+    }
+
+    public void setExtendedCertificate(ExtendedCertificate extendedCertificate) {
+        setFieldAs(EXTENDED_CERTIFICATE, extendedCertificate);
+    }
+
+    public AttributeCertificateV1 getV1AttrCert() {
+        return getFieldAs(V1_ATTR_CERT, AttributeCertificateV1.class);
+    }
+
+    public void setV1AttrCert(AttributeCertificateV1 v1AttrCert) {
+        setFieldAs(V1_ATTR_CERT, v1AttrCert);
+    }
+
+    public AttributeCertificateV2 getV2AttrCert() {
+        return getFieldAs(V2_ATTR_CERT, AttributeCertificateV2.class);
+    }
+
+    public void setV2AttrCert(AttributeCertificateV2 v2AttrCert) {
+        setFieldAs(V2_ATTR_CERT, v2AttrCert);
+    }
+
+    public OtherCertificateFormat getOther() {
+        return getFieldAs(OTHER, OtherCertificateFormat.class);
+    }
+
+    public void setOther(OtherCertificateFormat other) {
+        setFieldAs(OTHER, other);
+    }
 }

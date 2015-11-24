@@ -19,12 +19,8 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Sequence;
 
 /*
  * <pre>
@@ -35,23 +31,31 @@ import org.bouncycastle.asn1.ASN1Sequence;
  * </pre>
  */
 public class PolicyInformation extends Asn1SequenceType {
-    private static final int ALGORITHM = 0;
-    private static final int PARAMETERS = 1;
+    private static final int POLICY_IDENTIFIER = 0;
+    private static final int POLICY_QUALIFIERS = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+        new Asn1FieldInfo(POLICY_IDENTIFIER, -1, CertPolicyId.class),
+        new Asn1FieldInfo(POLICY_QUALIFIERS, -1, PolicyQualifierInfos.class)
     };
 
     public PolicyInformation() {
         super(fieldInfos);
     }
 
-    public ASN1ObjectIdentifier getPolicyIdentifier() {
-        return null;
+    public CertPolicyId getPolicyIdentifier() {
+        return getFieldAs(POLICY_IDENTIFIER, CertPolicyId.class);
+    }
+
+    public void setPolicyIdentifier(CertPolicyId policyIdentifier) {
+        setFieldAs(POLICY_IDENTIFIER, policyIdentifier);
     }
     
-    public ASN1Sequence getPolicyQualifiers() {
-        return null;
+    public PolicyQualifierInfos getPolicyQualifiers() {
+        return getFieldAs(POLICY_QUALIFIERS, PolicyQualifierInfos.class);
+    }
+
+    public void setPolicyQualifiers(PolicyQualifierInfos policyQualifiers) {
+        setFieldAs(POLICY_QUALIFIERS, policyQualifiers);
     }
 }

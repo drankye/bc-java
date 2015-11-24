@@ -19,44 +19,43 @@
  */
 package org.apache.kerby.x509;
 
+import org.apache.kerby.asn1.type.Asn1Choice;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
- *Ref. RFC3281
  * <pre>
- * RoleSyntax ::= SEQUENCE {
- *                 roleAuthority  [0] GeneralNames OPTIONAL,
- *                 roleName       [1] GeneralName
- *           } 
+ * EDIPartyName ::= SEQUENCE {
+ *      nameAssigner            [0]     DirectoryString OPTIONAL,
+ *      partyName               [1]     DirectoryString }
+ *
  * </pre>
  */
-public class RoleSyntax extends Asn1SequenceType {
-    private static final int ROLE_AUTHORITY = 0;
-    private static final int ROLE_NAME = 1;
+public class EDIPartyName extends Asn1Choice {
+    private static final int NAME_ASSIGNER = 0;
+    private static final int PARTY_NAME = 1;
 
-    static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ROLE_AUTHORITY, -1, GeneralNames.class),
-        new Asn1FieldInfo(ROLE_NAME, -1, GeneralName.class)
+    static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
+            new Asn1FieldInfo(NAME_ASSIGNER, -1, DirectoryString.class),
+            new Asn1FieldInfo(PARTY_NAME, -1, DirectoryString.class)
     };
 
-    public RoleSyntax() {
+    public EDIPartyName() {
         super(fieldInfos);
     }
 
-    public GeneralNames getRoleAuthority() {
-        return getFieldAs(ROLE_AUTHORITY, GeneralNames.class);
+    public DirectoryString getNameAssigner() {
+        return getFieldAs(NAME_ASSIGNER, DirectoryString.class);
     }
 
-    public void setRoleAuthority(GeneralNames roleAuthority) {
-        setFieldAs(ROLE_AUTHORITY, roleAuthority);
+    public void setNameAssigner(DirectoryString nameAssigner) {
+        setFieldAs(NAME_ASSIGNER, nameAssigner);
     }
 
-    public GeneralName getRoleName() {
-        return getFieldAs(ROLE_NAME, GeneralName.class);
+    public DirectoryString getPartyName() {
+        return getFieldAs(PARTY_NAME, DirectoryString.class);
     }
 
-    public void setRoleName(GeneralName roleName) {
-        setFieldAs(ROLE_NAME, roleName);
+    public void setPartyName(DirectoryString partyName) {
+        setFieldAs(PARTY_NAME, partyName);
     }
 }

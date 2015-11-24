@@ -19,8 +19,15 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1SequenceOf;
+import org.apache.kerby.asn1.type.Asn1OctetString;
 
-public class Extensions extends Asn1SequenceOf<Extension> {
-
+/**
+ *
+ * <pre>
+ *
+ *   KeyIdentifier ::= OCTET STRING
+ * </pre>
+ *
+ */
+public class KeyIdentifier extends Asn1OctetString {
 }
