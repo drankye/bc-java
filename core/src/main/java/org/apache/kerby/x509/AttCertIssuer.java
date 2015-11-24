@@ -45,7 +45,19 @@ public class AttCertIssuer extends Asn1Choice {
         super(fieldInfos);
     }
 
-    public ASN1Encodable getCertIssuer() {
-        return null;
+    public GeneralNames getV1Form() {
+        return getFieldAs(V1_FORM, GeneralNames.class);
+    }
+
+    public void setV1Form(GeneralNames v1Form) {
+        setFieldAs(V1_FORM, v1Form);
+    }
+
+    public V2Form getV2Form() {
+        return getFieldAs(V2_FORM, V2Form.class);
+    }
+
+    public void setV2Form(V2Form v2Form) {
+        setFieldAs(V2_FORM, v2Form);
     }
 }

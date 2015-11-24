@@ -44,4 +44,20 @@ public class DistributionPointName extends Asn1Choice {
     public DistributionPointName() {
         super(fieldInfos);
     }
+
+    public GeneralNames getFullName() {
+        return getFieldAs(FULL_NAME, GeneralNames.class);
+    }
+
+    public void setFullName(GeneralNames fullName) {
+        setFieldAs(FULL_NAME, fullName);
+    }
+
+    public RelativeDistinguishedName getNameRelativeToCRLIssuer() {
+        return getFieldAs(NAME_RELATIVE_TO_CRL_ISSUER, RelativeDistinguishedName.class);
+    }
+
+    public void setNameRelativeToCrlIssuer(RelativeDistinguishedName nameRelativeToCrlIssuer) {
+        setFieldAs(NAME_RELATIVE_TO_CRL_ISSUER, nameRelativeToCrlIssuer);
+    }
 }

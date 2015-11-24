@@ -47,4 +47,11 @@ public class Name extends Asn1Choice {
         super(fieldInfos);
     }
 
+    public RDNSequence getName() {
+        return getFieldAs(RDN_SEQUENCE, RDNSequence.class);
+    }
+
+    public void setName(RDNSequence name) {
+        setFieldAs(RDN_SEQUENCE, name);
+    }
 }

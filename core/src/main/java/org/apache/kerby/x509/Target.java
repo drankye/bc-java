@@ -62,4 +62,12 @@ public class Target extends Asn1Choice {
     public void setTargetGroup(GeneralName targetGroup) {
         setFieldAs(TARGET_GROUP, targetGroup);
     }
+
+    public TargetCert targetCert() {
+        return getFieldAs(TARGET_CERT, TargetCert.class);
+    }
+
+    public void setTargetCert(TargetCert targetCert) {
+        setFieldAs(TARGET_CERT, targetCert);
+    }
 }

@@ -56,4 +56,44 @@ public class DirectoryString extends Asn1Choice{
     public DirectoryString() {
         super(fieldInfos);
     }
+
+    public Asn1T61String getTeletexString() {
+        return getFieldAs(TELETEX_STRING, Asn1T61String.class);
+    }
+
+    public void setTeletexString(Asn1T61String teletexString) {
+        setFieldAs(TELETEX_STRING, teletexString);
+    }
+
+    public Asn1PrintableString getPrintableString() {
+        return getFieldAs(PRINTABLE_STRING, Asn1PrintableString.class);
+    }
+
+    public void setPrintableString(Asn1PrintableString printableString) {
+        setFieldAs(PRINTABLE_STRING, printableString);
+    }
+
+    public Asn1UniversalString getUniversalString() {
+        return getFieldAs(UNIVERSAL_STRING, Asn1UniversalString.class);
+    }
+
+    public void setUniversalString(Asn1UniversalString universalString) {
+        setFieldAs(UNIVERSAL_STRING, universalString);
+    }
+
+    public Asn1Utf8String getUtf8String() {
+        return getFieldAs(UTF8_STRING, Asn1Utf8String.class);
+    }
+
+    public void setUtf8String(Asn1Utf8String utf8String) {
+        setFieldAs(UTF8_STRING, utf8String);
+    }
+
+    public Asn1BmpString getBmpString() {
+        return getFieldAs(BMP_STRING, Asn1BmpString.class);
+    }
+
+    public void setBmpString(Asn1BmpString bmpString) {
+        setFieldAs(BMP_STRING, bmpString);
+    }
 }
