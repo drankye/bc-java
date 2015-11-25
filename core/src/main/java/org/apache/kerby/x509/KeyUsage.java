@@ -19,7 +19,8 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1BitString;
+import org.apache.kerby.asn1.type.Asn1EnumType;
+import org.apache.kerby.asn1.type.Asn1Flags;
 
 /**
  * The KeyUsage object.
@@ -38,14 +39,24 @@ import org.apache.kerby.asn1.type.Asn1BitString;
  *         decipherOnly            (8) }
  * </pre>
  */
-public class KeyUsage extends Asn1BitString {
-    public static final int        digitalSignature = (1 << 7); 
-    public static final int        nonRepudiation   = (1 << 6);
-    public static final int        keyEncipherment  = (1 << 5);
-    public static final int        dataEncipherment = (1 << 4);
-    public static final int        keyAgreement     = (1 << 3);
-    public static final int        keyCertSign      = (1 << 2);
-    public static final int        cRLSign          = (1 << 1);
-    public static final int        encipherOnly     = (1 << 0);
-    public static final int        decipherOnly     = (1 << 15);
+
+enum KeyUsageEnum implements Asn1EnumType {
+    DIGITAL_SIGNATURE,
+    NON_REPUDIATION,
+    KEY_ENCIPHERMENT,
+    DATA_ENCIPHERMENT,
+    KEY_AGREEMENT,
+    KEY_CERT_SIGN,
+    CRL_SIGN,
+    ENCIPHER_ONLY,
+    DECIPHER_ONLY;
+
+    @Override
+    public int getIntValue() {
+        return ordinal();
+    }
+}
+
+public class KeyUsage extends Asn1Flags {
+
 }

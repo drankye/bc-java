@@ -40,17 +40,17 @@ import org.apache.kerby.asn1.type.Asn1Enumerated;
  * </pre>
  */
 
-enum CRLReasonEnumType implements Asn1EnumType {
+enum CRLReasonEnum implements Asn1EnumType {
     UNSPECIFIED,
     KEY_COMPROMISE,
     CA_COMPROMISE,
     AFFILIATION_CHANGED,
-    SUPER_SEDED,
+    SUPERSEDED,
     CESSATION_OF_OPERATION,
     CERTIFICATE_HOLD,
     REMOVE_FROM_CRL,
     PRIVILEGE_WITH_DRAWN,
-    AACOMPROMISE;
+    AA_COMPROMISE;
 
     @Override
     public int getIntValue() {
@@ -58,9 +58,9 @@ enum CRLReasonEnumType implements Asn1EnumType {
     }
 }
 
-public class CRLReason extends Asn1Enumerated<CRLReasonEnumType> {
+public class CRLReason extends Asn1Enumerated<CRLReasonEnum> {
     @Override
     public Asn1EnumType[] getAllEnumValues() {
-        return CRLReasonEnumType.values();
+        return CRLReasonEnum.values();
     }
 }

@@ -41,7 +41,7 @@ public class CompressedData extends Asn1SequenceType {
     private static final int ENCAP_CONTENT_INFO = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(VERSION, -1, CMSVersion.class),
+            new Asn1FieldInfo(VERSION, -1, CmsVersion.class),
             new Asn1FieldInfo(COMPRESSION_ALGORITHM, -1, AlgorithmIdentifier.class),
             new Asn1FieldInfo(ENCAP_CONTENT_INFO, -1, EncapsulatedContentInfo.class)
     };
@@ -50,11 +50,11 @@ public class CompressedData extends Asn1SequenceType {
         super(fieldInfos);
     }
 
-    public CMSVersion getVersion() {
-        return getFieldAs(VERSION, CMSVersion.class);
+    public CmsVersion getVersion() {
+        return getFieldAs(VERSION, CmsVersion.class);
     }
 
-    public void setVersion(CMSVersion version) {
+    public void setVersion(CmsVersion version) {
         setFieldAs(VERSION, version);
     }
 

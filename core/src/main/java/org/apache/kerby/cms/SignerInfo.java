@@ -89,7 +89,7 @@ public class SignerInfo extends Asn1SequenceType {
     private static final int UNSIGNED_ATTRS = 6;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
-        new Asn1FieldInfo(CMS_VERSION, CMSVersion.class),
+        new Asn1FieldInfo(CMS_VERSION, CmsVersion.class),
         new Asn1FieldInfo(SID, SignerIdentifier.class),
         new Asn1FieldInfo(DIGEST_ALGORITHM, DigestAlgorithmIdentifier.class),
         new Asn1FieldInfo(SIGNED_ATTRS, SignedAttributes.class),

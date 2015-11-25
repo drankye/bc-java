@@ -19,6 +19,7 @@
  */
 package org.apache.kerby.cms;
 
+import org.apache.kerby.asn1.type.Asn1EnumType;
 import org.apache.kerby.asn1.type.Asn1Integer;
 
 /**
@@ -26,6 +27,27 @@ import org.apache.kerby.asn1.type.Asn1Integer;
  * { v0(0), v1(1), v2(2), v3(3), v4(4), v5(5) }
  */
 
-public class CMSVersion extends Asn1Integer {
+enum CmsVersionEnum implements Asn1EnumType {
+    V0,
+    V1,
+    V2,
+    V3,
+    V4,
+    V5;
 
+    @Override
+    public int getIntValue() {
+        return ordinal();
+    }
+}
+
+public class CmsVersion extends Asn1Integer {
+
+    public CmsVersion() {
+        this(CmsVersionEnum.V0);
+    }
+
+    public CmsVersion(CmsVersionEnum version) {
+        super(version.getIntValue());
+    }
 }

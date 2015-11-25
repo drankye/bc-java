@@ -72,7 +72,7 @@ public class SignedData extends Asn1SequenceType {
     private static final int SIGNER_INFOS = 5;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
-        new Asn1FieldInfo(CMS_VERSION, CMSVersion.class),
+        new Asn1FieldInfo(CMS_VERSION, CmsVersion.class),
         new Asn1FieldInfo(DIGEST_ALGORITHMS, DigestAlgorithmIdentifiers.class),
         new Asn1FieldInfo(ENCAP_CONTENT_INFO, EncapsulatedContentInfo.class),
         new Asn1FieldInfo(CERTIFICATES, CertificateSet.class),

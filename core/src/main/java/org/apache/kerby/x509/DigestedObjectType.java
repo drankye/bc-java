@@ -34,8 +34,7 @@ import org.apache.kerby.asn1.type.Asn1Enumerated;
  * </pre>
  * 
  */
-
-enum DigestedObjectEnumType implements Asn1EnumType {
+enum DigestedObjectEnum implements Asn1EnumType {
     PUBLIC_KEY,
     PUBLIC_KEY_CERT,
     OTHER_OBJECT_TYPES;
@@ -46,9 +45,9 @@ enum DigestedObjectEnumType implements Asn1EnumType {
     }
 }
 
-public class DigestedObjectType extends Asn1Enumerated<DigestedObjectEnumType> {
+public class DigestedObjectType extends Asn1Enumerated<DigestedObjectEnum> {
     @Override
     public Asn1EnumType[] getAllEnumValues() {
-        return DigestedObjectEnumType.values();
+        return DigestedObjectEnum.values();
     }
 }

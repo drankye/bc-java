@@ -19,11 +19,7 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1Choice;
-import org.apache.kerby.asn1.type.Asn1FieldInfo;
-import org.apache.kerby.asn1.type.Asn1IA5String;
-import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
-import org.apache.kerby.asn1.type.Asn1OctetString;
+import org.apache.kerby.asn1.type.*;
 import org.apache.kerby.cms.Name;
 
 /**
@@ -67,7 +63,8 @@ public class GeneralName extends Asn1Choice {
         new Asn1FieldInfo(OTHER_NAME, -1, OtherName.class),
         new Asn1FieldInfo(RFC822_NAME, -1, Asn1IA5String.class),
         new Asn1FieldInfo(DNS_NAME, -1, Asn1IA5String.class),
-//        new Asn1FieldInfo(X400_ADDRESS, -1, ORAddress.class),//TODO
+        // ORAddress is to be defined.
+        new Asn1FieldInfo(X400_ADDRESS, -1, Asn1Item.class),
         new Asn1FieldInfo(DIRECTORY_NAME, -1, Name.class),
         new Asn1FieldInfo(EDI_PARTY_NAME, -1, EDIPartyName.class),
         new Asn1FieldInfo(UNIFORM_RESOURCE_IDENTIFIER, -1, Asn1IA5String.class),
@@ -103,13 +100,13 @@ public class GeneralName extends Asn1Choice {
         setFieldAs(DNS_NAME, dnsName);
     }
 
-/*    public ORAddress getX400Address() {
-        return getFieldAs(X400_ADDRESS, ORAddress.class);
+    public Asn1Item getX400Address() {
+        return getFieldAs(X400_ADDRESS, Asn1Item.class);
     }
 
-    public void setX400Address(ORAddress x400Address) {
+    public void setX400Address(Asn1Item x400Address) {
         setFieldAs(X400_ADDRESS, x400Address);
-    }*/
+    }
 
     public Name getDirectoryName() {
         return getFieldAs(DIRECTORY_NAME,Name.class);

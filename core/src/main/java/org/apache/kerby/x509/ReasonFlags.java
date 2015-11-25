@@ -19,7 +19,8 @@
  */
 package org.apache.kerby.x509;
 
-import org.apache.kerby.asn1.type.Asn1OctetString;
+import org.apache.kerby.asn1.type.Asn1EnumType;
+import org.apache.kerby.asn1.type.Asn1Flags;
 
 /**
  * The ReasonFlags object.
@@ -36,51 +37,24 @@ import org.apache.kerby.asn1.type.Asn1OctetString;
  *      aACompromise            (8) }
  * </pre>
  */
-public class ReasonFlags extends Asn1OctetString {
-    /**
-     * @deprecated use lower case version
-     */
-    public static final int UNUSED                  = (1 << 7);
-    /**
-     * @deprecated use lower case version
-     */
-    public static final int KEY_COMPROMISE          = (1 << 6);
-    /**
-     * @deprecated use lower case version
-     */
-    public static final int CA_COMPROMISE           = (1 << 5);
-    /**
-     * @deprecated use lower case version
-     */
-    public static final int AFFILIATION_CHANGED     = (1 << 4);
-    /**
-     * @deprecated use lower case version
-     */
-    public static final int SUPERSEDED              = (1 << 3);
-    /**
-     * @deprecated use lower case version
-     */
-    public static final int CESSATION_OF_OPERATION  = (1 << 2);
-    /**
-     * @deprecated use lower case version
-     */
-    public static final int CERTIFICATE_HOLD        = (1 << 1);
-    /**
-     * @deprecated use lower case version
-     */
-    public static final int PRIVILEGE_WITHDRAWN     = (1 << 0);
-    /**
-     * @deprecated use lower case version
-     */
-    public static final int AA_COMPROMISE           = (1 << 15);
-    
-    public static final int unused                  = (1 << 7);
-    public static final int keyCompromise           = (1 << 6);
-    public static final int cACompromise            = (1 << 5);
-    public static final int affiliationChanged      = (1 << 4);
-    public static final int superseded              = (1 << 3);
-    public static final int cessationOfOperation    = (1 << 2);
-    public static final int certificateHold         = (1 << 1);
-    public static final int privilegeWithdrawn      = (1 << 0);
-    public static final int aACompromise            = (1 << 15);
+
+enum ReasonFlagsEnum implements Asn1EnumType {
+    UNUSED,
+    KEY_COMPROMISE,
+    CA_COMPROMISE,
+    AFFILIATION_CHANGED,
+    SUPERSEDED,
+    CESSATION_OF_OPERATION,
+    CERTIFICATE_HOLD,
+    PRIVILEGE_WITH_DRAWN,
+    AA_COMPROMISE;
+
+    @Override
+    public int getIntValue() {
+        return ordinal();
+    }
+}
+
+public class ReasonFlags extends Asn1Flags {
+
 }

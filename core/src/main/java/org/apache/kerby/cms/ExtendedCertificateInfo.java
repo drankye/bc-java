@@ -35,7 +35,7 @@ public class ExtendedCertificateInfo extends Asn1SequenceType {
     private static final int ATTRIBUTES = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(CMS_VERSION, CMSVersion.class),
+            new Asn1FieldInfo(CMS_VERSION, CmsVersion.class),
             new Asn1FieldInfo(CERTIFICATE, SignatureAlgorithmIdentifier.class),
             new Asn1FieldInfo(ATTRIBUTES, Signature.class)
     };
@@ -44,11 +44,11 @@ public class ExtendedCertificateInfo extends Asn1SequenceType {
         super(fieldInfos);
     }
 
-    public CMSVersion getCmsVersion() {
-        return getFieldAs(CMS_VERSION, CMSVersion.class);
+    public CmsVersion getCmsVersion() {
+        return getFieldAs(CMS_VERSION, CmsVersion.class);
     }
 
-    public void setCmsVersion(CMSVersion version) {
+    public void setCmsVersion(CmsVersion version) {
         setFieldAs(CMS_VERSION, version);
     }
 
