@@ -36,7 +36,7 @@ enum CmsVersionEnum implements Asn1EnumType {
     V5;
 
     @Override
-    public int getIntValue() {
+    public int getValue() {
         return ordinal();
     }
 }
@@ -48,6 +48,6 @@ public class CmsVersion extends Asn1Integer {
     }
 
     public CmsVersion(CmsVersionEnum version) {
-        super(version.getIntValue());
+        super(version.getValue());
     }
 }

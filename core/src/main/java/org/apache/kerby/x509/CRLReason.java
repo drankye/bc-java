@@ -53,7 +53,7 @@ enum CRLReasonEnum implements Asn1EnumType {
     AA_COMPROMISE;
 
     @Override
-    public int getIntValue() {
+    public int getValue() {
         return ordinal();
     }
 }

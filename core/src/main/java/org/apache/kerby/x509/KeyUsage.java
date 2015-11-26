@@ -52,7 +52,7 @@ enum KeyUsageEnum implements Asn1EnumType {
     DECIPHER_ONLY;
 
     @Override
-    public int getIntValue() {
+    public int getValue() {
         return ordinal();
     }
 }

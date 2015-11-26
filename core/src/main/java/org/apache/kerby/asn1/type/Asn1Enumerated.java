@@ -45,7 +45,7 @@ public abstract class Asn1Enumerated<T extends Asn1EnumType> extends Asn1Simple<
     }
 
     protected void toBytes() {
-        BigInteger biValue = BigInteger.valueOf(getValue().getIntValue());
+        BigInteger biValue = BigInteger.valueOf(getValue().getValue());
         setBytes(biValue.toByteArray());
     }
 
@@ -54,7 +54,7 @@ public abstract class Asn1Enumerated<T extends Asn1EnumType> extends Asn1Simple<
         int iVal = biVal.intValue();
         Asn1EnumType[] allValues = getAllEnumValues();
         for (Asn1EnumType val : allValues) {
-            if (val.getIntValue() == iVal) {
+            if (val.getValue() == iVal) {
                 setValue((T) val);
             }
         }

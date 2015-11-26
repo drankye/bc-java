@@ -21,17 +21,12 @@ package org.apache.kerby.asn1.type;
 
 import org.apache.kerby.asn1.LimitedByteBuffer;
 import org.apache.kerby.asn1.TagClass;
+import org.apache.kerby.asn1.TaggingOption;
 import org.apache.kerby.asn1.UniversalTag;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-/**
- * Given choices, a choice to be made: which one to use/available.
- *
- * WARNING!!!!
- * Note, this is far from complete, as most of parent methods are to override.
- */
 public class Asn1Choice extends AbstractAsn1Type<Asn1Type> {
 
     private Asn1FieldInfo[] fieldInfos;
@@ -46,29 +41,34 @@ public class Asn1Choice extends AbstractAsn1Type<Asn1Type> {
 
     @Override
     protected int encodingBodyLength() {
-        Asn1Type field = getChosen();
-        if (field != null) {
-            return ((AbstractAsn1Type<?>)field).encodingBodyLength();
+        for (int i = 0; i < fields.length; ++i) {
+            AbstractAsn1Type<?> field = (AbstractAsn1Type<?>) fields[i];
+            if (field != null) {
+                if (fieldInfos[i].isTagged()) {
+                    TaggingOption taggingOption = fieldInfos[i].getTaggingOption();
+                    return field.taggedEncodingLength(taggingOption);
+                } else {
+                    return field.encodingLength();
+                }
+            }
         }
         return 0;
     }
 
     @Override
     protected void encodeBody(ByteBuffer buffer) {
-        Asn1Type field = getChosen();
-        if (field != null) {
-            ((AbstractAsn1Type<?>)field).encodeBody(buffer);
-        }
-    }
-
-    protected Asn1Type getChosen() {
         for (int i = 0; i < fields.length; ++i) {
             Asn1Type field = fields[i];
             if (field != null) {
-                return field;
+                if (fieldInfos[i].isTagged()) {
+                    TaggingOption taggingOption = fieldInfos[i].getTaggingOption();
+                    field.taggedEncode(buffer, taggingOption);
+                } else {
+                    field.encode(buffer);
+                }
+                break;
             }
         }
-        return null;
     }
 
     @Override

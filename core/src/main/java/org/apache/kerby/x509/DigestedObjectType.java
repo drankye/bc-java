@@ -40,7 +40,7 @@ enum DigestedObjectEnum implements Asn1EnumType {
     OTHER_OBJECT_TYPES;
 
     @Override
-    public int getIntValue() {
+    public int getValue() {
         return ordinal();
     }
 }
