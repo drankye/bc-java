@@ -1,5 +1,7 @@
 package org.apache.kerby.cms;
 
+import org.apache.kerby.cms.type.CompressedData;
+import org.apache.kerby.cms.type.ContentInfo;
 import org.bouncycastle.util.encoders.Base64;
 
 import java.io.IOException;
