@@ -20,6 +20,7 @@
 package org.apache.kerby.cms.type;
 
 import org.apache.kerby.asn1.type.Asn1SetOf;
+import org.apache.kerby.x500.type.AttributeTypeAndValue;
 
 /**
  * RelativeDistinguishedName ::= SET SIZE (1..MAX) OF AttributeTypeAndValue

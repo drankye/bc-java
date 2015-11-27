@@ -17,25 +17,13 @@
  *  under the License.
  *
  */
-package org.apache.kerby.x509.type;
+package org.apache.kerby.x500.type;
 
-import org.apache.kerby.asn1.type.Asn1SequenceOf;
+import org.apache.kerby.asn1.type.Asn1SetOf;
+import org.apache.kerby.x500.type.AttributeTypeAndValue;
 
 /**
- *
- * <pre>
- * id-pe-authorityInfoAccess OBJECT IDENTIFIER ::= { id-pe 1 }
- *
- * AuthorityInfoAccessSyntax  ::=
- *      SEQUENCE SIZE (1..MAX) OF AccessDescription
- * AccessDescription  ::=  SEQUENCE {
- *       accessMethod          OBJECT IDENTIFIER,
- *       accessLocation        GeneralName
- * }
- *
- * </pre>
+ * RelativeDistinguishedName ::= SET SIZE (1..MAX) OF AttributeTypeAndValue
  */
-public class AuthorityInformationAccess
-    extends Asn1SequenceOf<AccessDescription> {
-
+public class RelativeDistinguishedName extends Asn1SetOf<AttributeTypeAndValue> {
 }

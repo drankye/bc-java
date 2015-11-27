@@ -20,8 +20,6 @@
 package org.apache.kerby.x509.type;
 
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1ObjectIdentifier;
-import org.bouncycastle.asn1.ASN1Primitive;
 
 /**
  *

@@ -22,6 +22,7 @@ package org.apache.kerby.cms.type;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1Integer;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.x500.type.Name;
 
 /**
  * Ref. RFC5652

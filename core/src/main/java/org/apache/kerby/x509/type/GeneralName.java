@@ -26,7 +26,7 @@ import org.apache.kerby.asn1.type.Asn1Item;
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1OctetString;
 import org.apache.kerby.asn1.type.ExplicitField;
-import org.apache.kerby.cms.type.Name;
+import org.apache.kerby.x500.type.Name;
 
 /**
  *
