@@ -24,6 +24,6 @@ import org.apache.kerby.asn1.type.Asn1SetOf;
 /**
  * CertificateSet ::= SET OF CertificateChoices
  */
-public class CertificateSet extends Asn1SetOf <CertificateChoices> {
+public class CertificateSet extends Asn1SetOf<CertificateChoices> {
 
 }

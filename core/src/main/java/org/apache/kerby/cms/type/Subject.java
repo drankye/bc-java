@@ -34,7 +34,7 @@ import org.apache.kerby.x509.type.IssuerSerial;
  * },
  *
  */
-public class Subject extends Asn1Choice{
+public class Subject extends Asn1Choice {
     private static final int BASE_CERTIFICATE_ID = 0;
     private static final int SUBJECT_NAME = 1;
 

@@ -45,7 +45,7 @@ import org.apache.kerby.x509.type.Extensions;
  *
  * AttCertVersionV1 ::= INTEGER { v1(0) }
  */
-public class AttributeCertificateInfoV1 extends Asn1SequenceType{
+public class AttributeCertificateInfoV1 extends Asn1SequenceType {
 
     private static final int VERSION = 0;
     private static final int SUBJECT = 1;
