@@ -24,7 +24,7 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
 import org.apache.kerby.x509.AlgorithmIdentifier;
 
 /** 
- * RFC 3274: CMS Compressed Data.
+ * Ref. RFC 3274
  * 
  * <pre>
  * CompressedData ::= SEQUENCE {
@@ -41,9 +41,9 @@ public class CompressedData extends Asn1SequenceType {
     private static final int ENCAP_CONTENT_INFO = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(VERSION, -1, CmsVersion.class),
-            new Asn1FieldInfo(COMPRESSION_ALGORITHM, -1, AlgorithmIdentifier.class),
-            new Asn1FieldInfo(ENCAP_CONTENT_INFO, -1, EncapsulatedContentInfo.class)
+            new Asn1FieldInfo(VERSION, CmsVersion.class),
+            new Asn1FieldInfo(COMPRESSION_ALGORITHM, AlgorithmIdentifier.class),
+            new Asn1FieldInfo(ENCAP_CONTENT_INFO, EncapsulatedContentInfo.class)
     };
 
     public CompressedData() {

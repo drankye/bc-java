@@ -26,28 +26,25 @@ import org.apache.kerby.x509.AlgorithmIdentifier;
 import org.apache.kerby.x509.TBSCertList;
 
 /**
- * PKIX RFC-2459
- *
- * The X.509 v2 CRL syntax is as follows.  For signature calculation,
- * the data that is to be signed is ASN.1 DER encoded.
+ * Ref. RFC-2459
  *
  * <pre>
  * CertificateList  ::=  SEQUENCE  {
  *      tbsCertList          TBSCertList,
  *      signatureAlgorithm   AlgorithmIdentifier,
- *      signatureValue       BIT STRING  }
+ *      signatureValue       BIT STRING
+ * }
  * </pre>
  */
 public class CertificateList extends Asn1SequenceType {
-
     private static final int TBS_CERT_LIST = 0;
     private static final int SIGNATURE_ALGORITHMS = 1;
     private static final int SIGNATURE_VALUE = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(TBS_CERT_LIST, -1, TBSCertList.class),
-            new Asn1FieldInfo(SIGNATURE_ALGORITHMS, -1, AlgorithmIdentifier.class),
-            new Asn1FieldInfo(SIGNATURE_VALUE, -1, Asn1BitString.class)
+            new Asn1FieldInfo(TBS_CERT_LIST, TBSCertList.class),
+            new Asn1FieldInfo(SIGNATURE_ALGORITHMS, AlgorithmIdentifier.class),
+            new Asn1FieldInfo(SIGNATURE_VALUE, Asn1BitString.class)
     };
 
     public CertificateList() {

@@ -21,32 +21,10 @@ package org.apache.kerby.cms;
 
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ImplicitField;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5652#section-5.3">RFC 5652</a>:
- * Signature container per Signer, see {@link SignerIdentifier}.
- * <pre>
- * PKCS#7:
- *
- * SignerInfo ::= SEQUENCE {
- *     version                   Version,
- *     sid                       SignerIdentifier,
- *     digestAlgorithm           DigestAlgorithmIdentifier,
- *     authenticatedAttributes   [0] IMPLICIT Attributes OPTIONAL,
- *     digestEncryptionAlgorithm DigestEncryptionAlgorithmIdentifier,
- *     encryptedDigest           EncryptedDigest,
- *     unauthenticatedAttributes [1] IMPLICIT Attributes OPTIONAL
- * }
- *
- * EncryptedDigest ::= OCTET STRING
- *
- * DigestAlgorithmIdentifier ::= AlgorithmIdentifier
- *
- * DigestEncryptionAlgorithmIdentifier ::= AlgorithmIdentifier
- *
- * -----------------------------------------
- *
- * RFC 5652:
+ * Ref. RFC 5652
  *
  * SignerInfo ::= SEQUENCE {
  *     version            CMSVersion,
@@ -58,25 +36,6 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  *     unsignedAttrs      [1] IMPLICIT UnsignedAttributes OPTIONAL
  * }
  *
- * -- {@link SignerIdentifier} referenced certificates are at containing
- * -- {@link SignedData} certificates element.
- *
- * SignerIdentifier ::= CHOICE {
- *     issuerAndSerialNumber {@link IssuerAndSerialNumber},
- *     subjectKeyIdentifier  [0] SubjectKeyIdentifier }
- *
- * -- See Attributes for generalized SET OF {@link Attribute}
- *
- * SignedAttributes   ::= SET SIZE (1..MAX) OF Attribute
- * UnsignedAttributes ::= SET SIZE (1..MAX) OF Attribute
- * 
- * {@link Attribute} ::= SEQUENCE {
- *     attrType   OBJECT IDENTIFIER,
- *     attrValues SET OF AttributeValue }
- *
- * AttributeValue ::= ANY
- * 
- * SignatureValue ::= OCTET STRING
  * </pre>
  */
 public class SignerInfo extends Asn1SequenceType {
@@ -92,10 +51,10 @@ public class SignerInfo extends Asn1SequenceType {
         new Asn1FieldInfo(CMS_VERSION, CmsVersion.class),
         new Asn1FieldInfo(SID, SignerIdentifier.class),
         new Asn1FieldInfo(DIGEST_ALGORITHM, DigestAlgorithmIdentifier.class),
-        new Asn1FieldInfo(SIGNED_ATTRS, SignedAttributes.class),
+        new ImplicitField(SIGNED_ATTRS, 0, SignedAttributes.class),
         new Asn1FieldInfo(SIGNATURE_ALGORITHMS, SignatureAlgorithmIdentifier.class),
         new Asn1FieldInfo(SIGNATURE, SignatureValue.class),
-        new Asn1FieldInfo(UNSIGNED_ATTRS, UnsignedAttributes.class)
+        new ImplicitField(UNSIGNED_ATTRS, 1, UnsignedAttributes.class)
     };
 
     public SignerInfo() {

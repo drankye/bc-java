@@ -24,6 +24,7 @@ import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 import org.apache.kerby.asn1.type.Asn1Type;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  * Ref. RFC 5652
@@ -42,8 +43,8 @@ public class ContentInfo extends Asn1SequenceType {
     private static final int CONTENT = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
-        new Asn1FieldInfo(CONTENT_TYPE, -1, Asn1ObjectIdentifier.class, true),
-        new Asn1FieldInfo(CONTENT, 0, Asn1Any.class, false),
+        new Asn1FieldInfo(CONTENT_TYPE, Asn1ObjectIdentifier.class),
+        new ExplicitField(CONTENT, 0, Asn1Any.class),
     };
 
     public ContentInfo() {

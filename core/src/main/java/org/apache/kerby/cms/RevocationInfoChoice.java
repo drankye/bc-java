@@ -21,6 +21,7 @@ package org.apache.kerby.cms;
 
 import org.apache.kerby.asn1.type.Asn1Choice;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.ImplicitField;
 
 /**
  * RevocationInfoChoice ::= CHOICE {
@@ -34,7 +35,7 @@ public class RevocationInfoChoice extends Asn1Choice {
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
             new Asn1FieldInfo(CRL, CertificateList.class),
-            new Asn1FieldInfo(OTHER, OtherRevocationInfoFormat.class)
+            new ImplicitField(OTHER, 1, OtherRevocationInfoFormat.class)
     };
 
     public RevocationInfoChoice() {

@@ -24,8 +24,7 @@ import org.apache.kerby.asn1.type.Asn1Integer;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5652#section-10.2.4">RFC 5652</a>: IssuerAndSerialNumber object.
- * <p>
+ * Ref. RFC5652
  * <pre>
  * IssuerAndSerialNumber ::= SEQUENCE {
  *     issuer Name,

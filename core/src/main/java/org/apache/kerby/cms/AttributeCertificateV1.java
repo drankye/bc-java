@@ -27,9 +27,10 @@ import org.apache.kerby.x509.AttributeCertificateInfo;
 
 /**
  * AttributeCertificateV1 ::= SEQUENCE {
- * acInfo AttributeCertificateInfoV1,
- * signatureAlgorithm AlgorithmIdentifier,
- * signature BIT STRING }
+ *   acInfo AttributeCertificateInfoV1,
+ *   signatureAlgorithm AlgorithmIdentifier,
+ *   signature BIT STRING
+ * }
  */
 public class AttributeCertificateV1 extends Asn1SequenceType {
     private static final int ACI_INFO = 0;
@@ -37,9 +38,9 @@ public class AttributeCertificateV1 extends Asn1SequenceType {
     private static final int SIGNATURE = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(ACI_INFO, -1, AttributeCertificateInfoV1.class),
-            new Asn1FieldInfo(SIGNATURE_ALGORITHM, -1, AlgorithmIdentifier.class),
-            new Asn1FieldInfo(SIGNATURE, -1, Asn1BitString.class)
+            new Asn1FieldInfo(ACI_INFO, AttributeCertificateInfoV1.class),
+            new Asn1FieldInfo(SIGNATURE_ALGORITHM, AlgorithmIdentifier.class),
+            new Asn1FieldInfo(SIGNATURE, Asn1BitString.class)
     };
 
     public AttributeCertificateV1(Asn1FieldInfo[] tags) {

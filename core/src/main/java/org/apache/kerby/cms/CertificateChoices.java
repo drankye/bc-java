@@ -21,14 +21,15 @@ package org.apache.kerby.cms;
 
 import org.apache.kerby.asn1.type.Asn1Choice;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.ImplicitField;
 
 /**
  * CertificateChoices ::= CHOICE {
- * certificate Certificate,
- * extendedCertificate [0] IMPLICIT ExtendedCertificate,  -- Obsolete
- * v1AttrCert [1] IMPLICIT AttributeCertificateV1,        -- Obsolete
- * v2AttrCert [2] IMPLICIT AttributeCertificateV2,
- * other [3] IMPLICIT OtherCertificateFormat }
+ *   certificate Certificate,
+ *   extendedCertificate [0] IMPLICIT ExtendedCertificate,  -- Obsolete
+ *   v1AttrCert [1] IMPLICIT AttributeCertificateV1,        -- Obsolete
+ *   v2AttrCert [2] IMPLICIT AttributeCertificateV2,
+ *   other [3] IMPLICIT OtherCertificateFormat }
  */
 public class CertificateChoices extends Asn1Choice {
 
@@ -40,10 +41,10 @@ public class CertificateChoices extends Asn1Choice {
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
             new Asn1FieldInfo(CERTIFICATE, Certificate.class),
-            new Asn1FieldInfo(EXTENDED_CERTIFICATE, ExtendedCertificate.class),
-            new Asn1FieldInfo(V1_ATTR_CERT, AttributeCertificateV1.class),
-            new Asn1FieldInfo(V2_ATTR_CERT, AttributeCertificateV2.class),
-            new Asn1FieldInfo(OTHER, OtherCertificateFormat.class),
+            new ImplicitField(EXTENDED_CERTIFICATE, 0, ExtendedCertificate.class),
+            new ImplicitField(V1_ATTR_CERT, 1, AttributeCertificateV1.class),
+            new ImplicitField(V2_ATTR_CERT, 2, AttributeCertificateV2.class),
+            new ImplicitField(OTHER, 3, OtherCertificateFormat.class),
     };
 
     public CertificateChoices() {

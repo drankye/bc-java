@@ -26,7 +26,7 @@ import org.apache.kerby.x509.AlgorithmIdentifier;
 import org.apache.kerby.x509.TBSCertificate;
 
 /**
- * an X509Certificate structure.
+ *
  * <pre>
  *  Certificate ::= SEQUENCE {
  *      tbsCertificate          TBSCertificate,
@@ -42,9 +42,9 @@ public class Certificate extends Asn1SequenceType {
     private static final int SIGNATURE = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(TBS_CERTIFICATE, -1, TBSCertificate.class),
-            new Asn1FieldInfo(SIGNATURE_ALGORITHM, -1, AlgorithmIdentifier.class),
-            new Asn1FieldInfo(SIGNATURE, -1, Asn1BitString.class)
+            new Asn1FieldInfo(TBS_CERTIFICATE, TBSCertificate.class),
+            new Asn1FieldInfo(SIGNATURE_ALGORITHM, AlgorithmIdentifier.class),
+            new Asn1FieldInfo(SIGNATURE, Asn1BitString.class)
     };
 
     public Certificate() {

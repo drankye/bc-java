@@ -23,6 +23,7 @@ import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1OctetString;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  * EncapsulatedContentInfo ::= SEQUENCE {
@@ -38,7 +39,7 @@ public class EncapsulatedContentInfo extends Asn1SequenceType {
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
             new Asn1FieldInfo(CONTENT_TYPE, Asn1ObjectIdentifier.class),
-            new Asn1FieldInfo(CONTENT, Asn1OctetString.class)
+            new ExplicitField(CONTENT, 0, Asn1OctetString.class)
     };
 
     public EncapsulatedContentInfo() {

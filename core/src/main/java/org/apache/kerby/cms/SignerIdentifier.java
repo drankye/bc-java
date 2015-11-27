@@ -22,14 +22,11 @@ package org.apache.kerby.cms;
 import org.apache.kerby.asn1.type.Asn1Choice;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1OctetString;
+import org.apache.kerby.asn1.type.ExplicitField;
 import org.apache.kerby.x509.SubjectKeyIdentifier;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5652#section-5.3">RFC 5652</a>:
- * Identify who signed the containing {@link SignerInfo} object.
- * <p>
- * The certificates referred to by this are at containing {@link SignedData} structure.
- * <p>
+ * Ref. RFC 5652
  * <pre>
  * SignerIdentifier ::= CHOICE {
  *     issuerAndSerialNumber IssuerAndSerialNumber,
@@ -45,7 +42,7 @@ public class SignerIdentifier extends Asn1Choice {
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
         new Asn1FieldInfo(ISSUER_AND_SERIAL_NUMBER, IssuerAndSerialNumber.class),
-        new Asn1FieldInfo(SUBJECT_KEY_IDENTIFIER, SubjectKeyIdentifier.class)
+        new ExplicitField(SUBJECT_KEY_IDENTIFIER, 0, SubjectKeyIdentifier.class)
     };
 
     public SignerIdentifier() {

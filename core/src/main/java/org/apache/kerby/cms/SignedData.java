@@ -21,6 +21,7 @@ package org.apache.kerby.cms;
 
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ImplicitField;
 
 /**
  * Ref. RFC 5652
@@ -48,8 +49,8 @@ public class SignedData extends Asn1SequenceType {
         new Asn1FieldInfo(CMS_VERSION, CmsVersion.class),
         new Asn1FieldInfo(DIGEST_ALGORITHMS, DigestAlgorithmIdentifiers.class),
         new Asn1FieldInfo(ENCAP_CONTENT_INFO, EncapsulatedContentInfo.class),
-        new Asn1FieldInfo(CERTIFICATES, CertificateSet.class),
-        new Asn1FieldInfo(CRLS, RevocationInfoChoices.class),
+        new ImplicitField(CERTIFICATES, 0, CertificateSet.class),
+        new ImplicitField(CRLS, 1, RevocationInfoChoices.class),
         new Asn1FieldInfo(SIGNER_INFOS, SignerInfos.class)
     };
 
