@@ -49,10 +49,10 @@ public class ObjectDigestInfo extends Asn1SequenceType {
     private static final int OBJECT_DIGEST = 3;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(DIGESTED_OBJECT_TYPE, -1, DigestedObjectType.class),
-        new Asn1FieldInfo(OTHER_OBJECT_TYPE_ID, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(DIGEST_ALGORITHM, -1, AlgorithmIdentifier.class),
-        new Asn1FieldInfo(OBJECT_DIGEST, -1, Asn1BitString.class)
+        new Asn1FieldInfo(DIGESTED_OBJECT_TYPE, DigestedObjectType.class),
+        new Asn1FieldInfo(OTHER_OBJECT_TYPE_ID, Asn1ObjectIdentifier.class),
+        new Asn1FieldInfo(DIGEST_ALGORITHM, AlgorithmIdentifier.class),
+        new Asn1FieldInfo(OBJECT_DIGEST, Asn1BitString.class)
     };
 
     public ObjectDigestInfo() {

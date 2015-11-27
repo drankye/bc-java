@@ -39,8 +39,8 @@ public class DigestInfo extends Asn1SequenceType {
     private static final int DIGEST = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(DIGEST_ALGORITHM, -1, AlgorithmIdentifier.class),
-        new Asn1FieldInfo(DIGEST, -1, Asn1OctetString.class)
+        new Asn1FieldInfo(DIGEST_ALGORITHM, AlgorithmIdentifier.class),
+        new Asn1FieldInfo(DIGEST, Asn1OctetString.class)
     };
 
     public DigestInfo() {

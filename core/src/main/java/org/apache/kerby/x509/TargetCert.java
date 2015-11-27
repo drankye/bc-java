@@ -36,9 +36,9 @@ public class TargetCert extends Asn1SequenceType{
     private static final int CERT_DIGEST_INFO = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(TARGET_CERTIFICATE, -1, IssuerSerial.class),
-            new Asn1FieldInfo(TARGET_NAME, -1, GeneralName.class),
-            new Asn1FieldInfo(CERT_DIGEST_INFO, -1, ObjectDigestInfo.class)
+            new Asn1FieldInfo(TARGET_CERTIFICATE, IssuerSerial.class),
+            new Asn1FieldInfo(TARGET_NAME, GeneralName.class),
+            new Asn1FieldInfo(CERT_DIGEST_INFO, ObjectDigestInfo.class)
     };
 
     public TargetCert() {

@@ -66,16 +66,16 @@ public class GeneralName extends Asn1Choice {
     private static final int REGISTERED_ID = 8;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new ExplicitField(OTHER_NAME, -1, OtherName.class),
-        new ExplicitField(RFC822_NAME, -1, Asn1IA5String.class),
-        new ExplicitField(DNS_NAME, -1, Asn1IA5String.class),
+        new ExplicitField(OTHER_NAME, OtherName.class),
+        new ExplicitField(RFC822_NAME, Asn1IA5String.class),
+        new ExplicitField(DNS_NAME, Asn1IA5String.class),
         // ORAddress is to be defined.
-        new ExplicitField(X400_ADDRESS, -1, Asn1Item.class),
-        new ExplicitField(DIRECTORY_NAME, -1, Name.class),
-        new ExplicitField(EDI_PARTY_NAME, -1, EDIPartyName.class),
-        new ExplicitField(UNIFORM_RESOURCE_IDENTIFIER, -1, Asn1IA5String.class),
-        new ExplicitField(IP_ADDRESS, -1, Asn1OctetString.class),
-        new ExplicitField(REGISTERED_ID, -1, Asn1ObjectIdentifier.class)
+        new ExplicitField(X400_ADDRESS, Asn1Item.class),
+        new ExplicitField(DIRECTORY_NAME, Name.class),
+        new ExplicitField(EDI_PARTY_NAME, EDIPartyName.class),
+        new ExplicitField(UNIFORM_RESOURCE_IDENTIFIER, Asn1IA5String.class),
+        new ExplicitField(IP_ADDRESS, Asn1OctetString.class),
+        new ExplicitField(REGISTERED_ID, Asn1ObjectIdentifier.class)
     };
 
     public GeneralName() {

@@ -22,6 +22,7 @@ package org.apache.kerby.x509;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1Integer;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  *
@@ -42,9 +43,9 @@ public class GeneralSubtree extends Asn1SequenceType {
     private static final int MAXMUM = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(BASE, -1, GeneralName.class),
-        new Asn1FieldInfo(MINIMUM, -1, Asn1Integer.class),
-        new Asn1FieldInfo(MAXMUM, -1, Asn1Integer.class)
+        new Asn1FieldInfo(BASE, GeneralName.class),
+        new ExplicitField(MINIMUM, 0, Asn1Integer.class),
+        new ExplicitField(MAXMUM, 1, Asn1Integer.class)
     };
 
     public GeneralSubtree() {

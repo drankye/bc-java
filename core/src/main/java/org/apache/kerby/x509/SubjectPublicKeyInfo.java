@@ -34,8 +34,8 @@ public class SubjectPublicKeyInfo extends Asn1SequenceType {
     private static final int SUBJECT_PUBLIC_KEY = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(ALGORITHM, -1, AlgorithmIdentifier.class),
-            new Asn1FieldInfo(SUBJECT_PUBLIC_KEY, -1, Asn1BitString.class)
+            new Asn1FieldInfo(ALGORITHM, AlgorithmIdentifier.class),
+            new Asn1FieldInfo(SUBJECT_PUBLIC_KEY, Asn1BitString.class)
     };
 
     public SubjectPublicKeyInfo() {

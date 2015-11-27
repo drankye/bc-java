@@ -23,6 +23,7 @@ import org.apache.kerby.asn1.type.Asn1Any;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  *
@@ -40,9 +41,9 @@ public class DistributionPoint extends Asn1SequenceType {
     private static final int CRL_ISSUER = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(DISTRIBUTION_POINT, -1, DistributionPointName.class),
-        new Asn1FieldInfo(REASONS, -1, ReasonFlags.class),
-        new Asn1FieldInfo(CRL_ISSUER, -1, GeneralNames.class)
+        new ExplicitField(DISTRIBUTION_POINT, DistributionPointName.class),
+        new ExplicitField(REASONS, ReasonFlags.class),
+        new ExplicitField(CRL_ISSUER, GeneralNames.class)
     };
 
     public DistributionPoint() {

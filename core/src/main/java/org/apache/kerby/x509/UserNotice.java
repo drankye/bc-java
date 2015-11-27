@@ -37,8 +37,8 @@ public class UserNotice extends Asn1SequenceType {
     private static final int EXPLICIT_TEXT = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(NOTICE_REF, -1, NoticeReference.class),
-        new Asn1FieldInfo(EXPLICIT_TEXT, -1, DisplayText.class)
+        new Asn1FieldInfo(NOTICE_REF, NoticeReference.class),
+        new Asn1FieldInfo(EXPLICIT_TEXT, DisplayText.class)
     };
 
     public UserNotice() {

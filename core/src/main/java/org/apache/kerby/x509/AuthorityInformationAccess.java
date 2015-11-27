@@ -39,9 +39,6 @@ import org.bouncycastle.asn1.DERSequence;
  *       accessMethod          OBJECT IDENTIFIER,
  *       accessLocation        GeneralName  }
  *
- * id-ad OBJECT IDENTIFIER ::= { id-pkix 48 }
- * id-ad-caIssuers OBJECT IDENTIFIER ::= { id-ad 2 }
- * id-ad-ocsp OBJECT IDENTIFIER ::= { id-ad 1 }
  * </pre>
  */
 public class AuthorityInformationAccess

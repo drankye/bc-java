@@ -59,15 +59,15 @@ public class AttributeCertificateInfo extends Asn1SequenceType {
     private static final int EXTENSIONS = 8;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(VERSION, -1, Asn1Integer.class),
-        new Asn1FieldInfo(HOLDER, -1, Holder.class),
-        new Asn1FieldInfo(ISSUER, -1, AttCertIssuer.class),
-        new Asn1FieldInfo(SIGNATURE, -1, AlgorithmIdentifier.class),
-        new Asn1FieldInfo(SERIAL_NUMBER, -1, CertificateSerialNumber.class),
-        new Asn1FieldInfo(ATTR_CERT_VALIDITY_PERIOD, -1, AttCertValidityPeriod.class),
-        new Asn1FieldInfo(ATTRIBUTES, -1, Attributes.class),
-        new Asn1FieldInfo(ISSUER_UNIQUE_ID, -1, Asn1BitString.class),
-        new Asn1FieldInfo(EXTENSIONS, -1, Extensions.class)
+        new Asn1FieldInfo(VERSION, Asn1Integer.class),
+        new Asn1FieldInfo(HOLDER, Holder.class),
+        new Asn1FieldInfo(ISSUER, AttCertIssuer.class),
+        new Asn1FieldInfo(SIGNATURE, AlgorithmIdentifier.class),
+        new Asn1FieldInfo(SERIAL_NUMBER, CertificateSerialNumber.class),
+        new Asn1FieldInfo(ATTR_CERT_VALIDITY_PERIOD, AttCertValidityPeriod.class),
+        new Asn1FieldInfo(ATTRIBUTES, Attributes.class),
+        new Asn1FieldInfo(ISSUER_UNIQUE_ID, Asn1BitString.class),
+        new Asn1FieldInfo(EXTENSIONS, Extensions.class)
     };
 
     public AttributeCertificateInfo() {

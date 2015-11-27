@@ -45,9 +45,9 @@ public class IetfAttrSyntaxChoice extends Asn1Choice {
     public static final int UTF8      = 3;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(OCTETS, -1, Asn1OctetString.class),
-        new Asn1FieldInfo(OID, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(UTF8, -1, Asn1ObjectIdentifier.class)
+        new Asn1FieldInfo(OCTETS, Asn1OctetString.class),
+        new Asn1FieldInfo(OID, Asn1ObjectIdentifier.class),
+        new Asn1FieldInfo(UTF8, Asn1ObjectIdentifier.class)
     };
 
     public IetfAttrSyntaxChoice() {

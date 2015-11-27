@@ -21,6 +21,7 @@ package org.apache.kerby.x509;
 
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /*
  * NameConstraints ::= SEQUENCE {
@@ -33,8 +34,8 @@ public class NameConstraints extends Asn1SequenceType {
     private static final int EXCLUDED_SUBTREES = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(PERMITTED_SUBTREES, -1, GeneralSubtrees.class),
-        new Asn1FieldInfo(EXCLUDED_SUBTREES, -1, GeneralSubtrees.class)
+        new ExplicitField(PERMITTED_SUBTREES, GeneralSubtrees.class),
+        new ExplicitField(EXCLUDED_SUBTREES, GeneralSubtrees.class)
     };
 
     public NameConstraints() {

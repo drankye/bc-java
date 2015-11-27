@@ -45,11 +45,11 @@ public class IssuingDistributionPoint extends Asn1SequenceType {
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
         new ExplicitField(DISTRIBUTION_POINT, DistributionPointName.class),
-        new Asn1FieldInfo(ONLY_CONTAINS_USER_CERTS, -1, Asn1Boolean.class),
-        new Asn1FieldInfo(ONLY_CONTAINS_CA_CERTS, -1, Asn1Boolean.class),
-        new Asn1FieldInfo(ONLY_SOME_REASONS, -1, ReasonFlags.class),
-        new Asn1FieldInfo(INDIRECT_CRL, -1, Asn1Boolean.class),
-        new Asn1FieldInfo(ONLY_CONTAINS_ATTRIBUTE_CERTS, -1, Asn1Boolean.class)
+        new ExplicitField(ONLY_CONTAINS_USER_CERTS, Asn1Boolean.class),
+        new ExplicitField(ONLY_CONTAINS_CA_CERTS, Asn1Boolean.class),
+        new ExplicitField(ONLY_SOME_REASONS, ReasonFlags.class),
+        new ExplicitField(INDIRECT_CRL, Asn1Boolean.class),
+        new ExplicitField(ONLY_CONTAINS_ATTRIBUTE_CERTS, Asn1Boolean.class)
     };
 
     public IssuingDistributionPoint() {

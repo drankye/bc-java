@@ -21,6 +21,7 @@ package org.apache.kerby.x509;
 
 import org.apache.kerby.asn1.type.Asn1Choice;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  * <pre>
@@ -35,8 +36,8 @@ public class EDIPartyName extends Asn1Choice {
     private static final int PARTY_NAME = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
-            new Asn1FieldInfo(NAME_ASSIGNER, -1, DirectoryString.class),
-            new Asn1FieldInfo(PARTY_NAME, -1, DirectoryString.class)
+            new ExplicitField(NAME_ASSIGNER, DirectoryString.class),
+            new ExplicitField(PARTY_NAME, DirectoryString.class)
     };
 
     public EDIPartyName() {

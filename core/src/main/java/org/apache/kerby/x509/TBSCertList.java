@@ -22,6 +22,7 @@ package org.apache.kerby.x509;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1Integer;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
 import org.apache.kerby.cms.Name;
 
 /**
@@ -56,13 +57,13 @@ public class TBSCertList extends Asn1SequenceType {
     private static final int CRL_EXTENSIONS = 6;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(VERSION, -1, Asn1Integer.class),
-        new Asn1FieldInfo(SIGNATURE, -1, AlgorithmIdentifier.class),
-        new Asn1FieldInfo(ISSUER, -1, Name.class),
-        new Asn1FieldInfo(THIS_UPDATA, -1, Time.class),
-        new Asn1FieldInfo(NEXT_UPDATE, -1, Time.class),
-        new Asn1FieldInfo(REVOKED_CERTIFICATES, -1, RevokedCertificates.class),
-        new Asn1FieldInfo(CRL_EXTENSIONS, -1, Extensions.class)
+        new Asn1FieldInfo(VERSION, Asn1Integer.class),
+        new Asn1FieldInfo(SIGNATURE, AlgorithmIdentifier.class),
+        new Asn1FieldInfo(ISSUER, Name.class),
+        new Asn1FieldInfo(THIS_UPDATA, Time.class),
+        new Asn1FieldInfo(NEXT_UPDATE, Time.class),
+        new Asn1FieldInfo(REVOKED_CERTIFICATES, RevokedCertificates.class),
+        new ExplicitField(CRL_EXTENSIONS, 0, Extensions.class)
     };
 
     public TBSCertList() {

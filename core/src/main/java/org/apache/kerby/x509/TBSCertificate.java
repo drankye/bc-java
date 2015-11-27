@@ -23,6 +23,8 @@ import org.apache.kerby.asn1.type.Asn1BitString;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1Integer;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
+import org.apache.kerby.asn1.type.ImplicitField;
 import org.apache.kerby.cms.Name;
 
 /**
@@ -55,16 +57,16 @@ public class TBSCertificate extends Asn1SequenceType {
     private static final int EXTENSIONS = 9;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(VERSION, -1, Asn1Integer.class),
-            new Asn1FieldInfo(SERIAL_NUMBER, -1, CertificateSerialNumber.class),
-            new Asn1FieldInfo(SIGNATURE, -1, AlgorithmIdentifier.class),
-            new Asn1FieldInfo(ISSUER, -1, Name.class),
-            new Asn1FieldInfo(VALIDITY, -1, AttCertValidityPeriod.class),
-            new Asn1FieldInfo(SUBJECT, -1, Name.class),
-            new Asn1FieldInfo(SUBJECT_PUBLIC_KEY_INFO, -1, SubjectPublicKeyInfo.class),
-            new Asn1FieldInfo(ISSUER_UNIQUE_ID, -1, Asn1BitString.class),
-            new Asn1FieldInfo(SUBJECT_UNIQUE_ID, -1, Asn1BitString.class),
-            new Asn1FieldInfo(EXTENSIONS, -1, Extensions.class)
+            new ExplicitField(VERSION, 0, Asn1Integer.class),
+            new Asn1FieldInfo(SERIAL_NUMBER, CertificateSerialNumber.class),
+            new Asn1FieldInfo(SIGNATURE, AlgorithmIdentifier.class),
+            new Asn1FieldInfo(ISSUER, Name.class),
+            new Asn1FieldInfo(VALIDITY, AttCertValidityPeriod.class),
+            new Asn1FieldInfo(SUBJECT, Name.class),
+            new Asn1FieldInfo(SUBJECT_PUBLIC_KEY_INFO, SubjectPublicKeyInfo.class),
+            new ImplicitField(ISSUER_UNIQUE_ID, 1, Asn1BitString.class),
+            new ImplicitField(SUBJECT_UNIQUE_ID, 2, Asn1BitString.class),
+            new ExplicitField(EXTENSIONS, 3, Extensions.class)
     };
 
     public TBSCertificate() {

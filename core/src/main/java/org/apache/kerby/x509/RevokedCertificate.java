@@ -40,9 +40,9 @@ public class RevokedCertificate extends Asn1SequenceType {
     private static final int CRL_ENTRY_EXTENSIONS = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(USER_CERTIFICATE, -1, CertificateSerialNumber.class),
-        new Asn1FieldInfo(REVOCATION_DATA, -1, Time.class),
-        new Asn1FieldInfo(CRL_ENTRY_EXTENSIONS, -1, Extensions.class)
+        new Asn1FieldInfo(USER_CERTIFICATE, CertificateSerialNumber.class),
+        new Asn1FieldInfo(REVOCATION_DATA, Time.class),
+        new Asn1FieldInfo(CRL_ENTRY_EXTENSIONS, Extensions.class)
     };
 
     public RevokedCertificate() {

@@ -22,6 +22,7 @@ package org.apache.kerby.x509;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1Integer;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  * Ref. RFC 5280
@@ -40,8 +41,8 @@ public class PolicyConstraints extends Asn1SequenceType {
     private static final int INHIBIT_POLICY_MAPPING = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(REQUIRE_EXPLICIT_POLICY, -1, Asn1Integer.class),
-        new Asn1FieldInfo(INHIBIT_POLICY_MAPPING, -1, Asn1Integer.class)
+        new ExplicitField(REQUIRE_EXPLICIT_POLICY, Asn1Integer.class),
+        new ExplicitField(INHIBIT_POLICY_MAPPING, Asn1Integer.class)
     };
 
     public PolicyConstraints() {

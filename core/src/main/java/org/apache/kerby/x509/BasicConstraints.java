@@ -39,8 +39,8 @@ public class BasicConstraints extends Asn1SequenceType {
     private static final int PATH_LEN_CONSTRAINT = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(CA, -1, Asn1Boolean.class),
-        new Asn1FieldInfo(PATH_LEN_CONSTRAINT, -1, Asn1Integer.class)
+        new Asn1FieldInfo(CA, Asn1Boolean.class),
+        new Asn1FieldInfo(PATH_LEN_CONSTRAINT, Asn1Integer.class)
     };
 
     public BasicConstraints() {

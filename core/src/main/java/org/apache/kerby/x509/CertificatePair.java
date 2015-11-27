@@ -21,6 +21,7 @@ package org.apache.kerby.x509;
 
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  *
@@ -36,8 +37,8 @@ public class CertificatePair extends Asn1SequenceType {
     private static final int REVERSE = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(FORWARD, -1, Certificate.class),
-        new Asn1FieldInfo(REVERSE, -1, Certificate.class)
+        new ExplicitField(FORWARD, Certificate.class),
+        new ExplicitField(REVERSE, Certificate.class)
     };
 
     public CertificatePair() {

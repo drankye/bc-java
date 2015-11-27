@@ -21,6 +21,7 @@ package org.apache.kerby.x509;
 
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ImplicitField;
 
 import java.math.BigInteger;
 
@@ -45,9 +46,9 @@ public class AuthorityKeyIdentifier extends Asn1SequenceType {
 
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(KEY_IDENTIFIER, -1, KeyIdentifier.class),
-        new Asn1FieldInfo(AUTHORITY_CERT_ISSUER, -1, GeneralNames.class),
-        new Asn1FieldInfo(AUTHORITY_CERT_SERIAL_NUMBER, -1, CertificateSerialNumber.class)
+        new ImplicitField(KEY_IDENTIFIER, KeyIdentifier.class),
+        new ImplicitField(AUTHORITY_CERT_ISSUER, GeneralNames.class),
+        new ImplicitField(AUTHORITY_CERT_SERIAL_NUMBER, CertificateSerialNumber.class)
     };
 
     public AuthorityKeyIdentifier() {

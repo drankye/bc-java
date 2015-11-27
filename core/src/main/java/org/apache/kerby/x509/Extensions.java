@@ -21,6 +21,16 @@ package org.apache.kerby.x509;
 
 import org.apache.kerby.asn1.type.Asn1SequenceOf;
 
+/**
+ * <pre>
+ *     Extensions        ::=   SEQUENCE SIZE (1..MAX) OF Extension
+ *
+ *     Extension         ::=   SEQUENCE {
+ *        extnId            EXTENSION.&amp;id ({ExtensionSet}),
+ *        critical          BOOLEAN DEFAULT FALSE,
+ *        extnValue         OCTET STRING }
+ * </pre>
+ */
 public class Extensions extends Asn1SequenceOf<Extension> {
 
 }

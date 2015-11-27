@@ -46,11 +46,11 @@ public class DirectoryString extends Asn1Choice{
     private static final int BMP_STRING = 4;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
-            new Asn1FieldInfo(TELETEX_STRING, -1, Asn1T61String.class),
-            new Asn1FieldInfo(PRINTABLE_STRING, -1, Asn1PrintableString.class),
-            new Asn1FieldInfo(UNIVERSAL_STRING, -1, Asn1UniversalString.class),
-            new Asn1FieldInfo(UTF8_STRING, -1, Asn1Utf8String.class),
-            new Asn1FieldInfo(BMP_STRING, -1, Asn1BmpString.class)
+            new Asn1FieldInfo(TELETEX_STRING, Asn1T61String.class),
+            new Asn1FieldInfo(PRINTABLE_STRING, Asn1PrintableString.class),
+            new Asn1FieldInfo(UNIVERSAL_STRING, Asn1UniversalString.class),
+            new Asn1FieldInfo(UTF8_STRING, Asn1Utf8String.class),
+            new Asn1FieldInfo(BMP_STRING, Asn1BmpString.class)
     };
 
     public DirectoryString() {

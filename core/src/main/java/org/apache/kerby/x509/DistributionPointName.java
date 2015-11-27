@@ -21,6 +21,7 @@ package org.apache.kerby.x509;
 
 import org.apache.kerby.asn1.type.Asn1Choice;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.ExplicitField;
 import org.apache.kerby.cms.RelativeDistinguishedName;
 
 /**
@@ -37,8 +38,8 @@ public class DistributionPointName extends Asn1Choice {
     private static final int NAME_RELATIVE_TO_CRL_ISSUER = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(FULL_NAME, -1, GeneralNames.class),
-        new Asn1FieldInfo(NAME_RELATIVE_TO_CRL_ISSUER, -1, RelativeDistinguishedName.class)
+        new ExplicitField(FULL_NAME, GeneralNames.class),
+        new ExplicitField(NAME_RELATIVE_TO_CRL_ISSUER, RelativeDistinguishedName.class)
     };
 
     public DistributionPointName() {

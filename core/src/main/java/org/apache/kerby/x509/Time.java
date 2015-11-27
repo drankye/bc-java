@@ -40,8 +40,8 @@ public class Time extends Asn1Choice {
     private static final int GENERAL_TIME = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(UTC_TIME, -1, Asn1UtcTime.class),
-        new Asn1FieldInfo(GENERAL_TIME, -1, Asn1GeneralizedTime.class)
+        new Asn1FieldInfo(UTC_TIME, Asn1UtcTime.class),
+        new Asn1FieldInfo(GENERAL_TIME, Asn1GeneralizedTime.class)
     };
 
     public Time() {

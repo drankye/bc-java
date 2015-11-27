@@ -184,14 +184,25 @@ public class Extension extends Asn1SequenceType {
      */
     public static final String targetInformation = "2.5.29.55";
 
+    /**
+     * <pre>
+     *     Extensions        ::=   SEQUENCE SIZE (1..MAX) OF Extension
+     *
+     *     Extension         ::=   SEQUENCE {
+     *        extnId            EXTENSION.&amp;id ({ExtensionSet}),
+     *        critical          BOOLEAN DEFAULT FALSE,
+     *        extnValue         OCTET STRING }
+     * </pre>
+     */
+
     private static final int EXTN_ID = 0;
     private static final int CRITICAL = 1;
     private static final int EXTN_VALUE = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(EXTN_ID, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(CRITICAL, -1, Asn1Boolean.class),
-        new Asn1FieldInfo(EXTN_VALUE, -1, Asn1OctetString.class)
+        new Asn1FieldInfo(EXTN_ID, Asn1ObjectIdentifier.class),
+        new Asn1FieldInfo(CRITICAL, Asn1Boolean.class),
+        new Asn1FieldInfo(EXTN_VALUE, Asn1OctetString.class)
     };
 
     public Extension() {

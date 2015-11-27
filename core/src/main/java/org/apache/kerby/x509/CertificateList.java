@@ -40,9 +40,9 @@ public class CertificateList extends Asn1SequenceType {
     private static final int SIGNATURE_VALUE = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(TBS_CERT_LIST, -1, TBSCertList.class),
-        new Asn1FieldInfo(SIGNATURE_ALGORITHMS, -1, AlgorithmIdentifier.class),
-        new Asn1FieldInfo(SIGNATURE_VALUE, -1, Asn1BitString.class)
+        new Asn1FieldInfo(TBS_CERT_LIST, TBSCertList.class),
+        new Asn1FieldInfo(SIGNATURE_ALGORITHMS, AlgorithmIdentifier.class),
+        new Asn1FieldInfo(SIGNATURE_VALUE, Asn1BitString.class)
     };
 
     public CertificateList() {

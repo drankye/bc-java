@@ -37,8 +37,8 @@ public class Attribute extends Asn1SequenceType {
     private static final int ATTR_VALUES = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ATTR_TYPE, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(ATTR_VALUES, -1, AttributeValues.class)
+        new Asn1FieldInfo(ATTR_TYPE, Asn1ObjectIdentifier.class),
+        new Asn1FieldInfo(ATTR_VALUES, AttributeValues.class)
     };
 
     public Attribute() {

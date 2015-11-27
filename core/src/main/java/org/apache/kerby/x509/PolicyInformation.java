@@ -35,8 +35,8 @@ public class PolicyInformation extends Asn1SequenceType {
     private static final int POLICY_QUALIFIERS = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(POLICY_IDENTIFIER, -1, CertPolicyId.class),
-        new Asn1FieldInfo(POLICY_QUALIFIERS, -1, PolicyQualifierInfos.class)
+        new Asn1FieldInfo(POLICY_IDENTIFIER, CertPolicyId.class),
+        new Asn1FieldInfo(POLICY_QUALIFIERS, PolicyQualifierInfos.class)
     };
 
     public PolicyInformation() {

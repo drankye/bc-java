@@ -42,8 +42,8 @@ public class NoticeReference extends Asn1SequenceType {
     private static final int NOTICE_NUMBERS = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ORGANIZATION, -1, DisplayText.class),
-        new Asn1FieldInfo(NOTICE_NUMBERS, -1, NoticeNumbers.class)
+        new Asn1FieldInfo(ORGANIZATION, DisplayText.class),
+        new Asn1FieldInfo(NOTICE_NUMBERS, NoticeNumbers.class)
     };
 
     public NoticeReference() {

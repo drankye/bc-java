@@ -24,6 +24,7 @@ import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 import org.apache.kerby.asn1.type.Asn1Type;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  * <pre>
@@ -38,8 +39,8 @@ public class OtherName extends Asn1SequenceType {
     private static final int VALUE = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(TYPE_ID, -1, Asn1ObjectIdentifier.class),
-            new Asn1FieldInfo(VALUE, -1, Asn1Any.class)
+            new Asn1FieldInfo(TYPE_ID, Asn1ObjectIdentifier.class),
+            new ExplicitField(VALUE, 0, Asn1Any.class)
     };
 
     public OtherName() {

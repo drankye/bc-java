@@ -23,6 +23,7 @@ import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1OctetString;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  * Ref. RFC3281
@@ -44,8 +45,8 @@ public class IetfAttrSyntax extends Asn1SequenceType {
     public static final int VALUES = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(POLICY_AUTHORITY, -1, GeneralNames.class),
-        new Asn1FieldInfo(VALUES, -1, IetfAttrSyntaxChoices.class)
+        new ExplicitField(POLICY_AUTHORITY, GeneralNames.class),
+        new Asn1FieldInfo(VALUES, IetfAttrSyntaxChoices.class)
     };
 
     public IetfAttrSyntax() {

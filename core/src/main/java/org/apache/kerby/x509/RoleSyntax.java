@@ -37,8 +37,8 @@ public class RoleSyntax extends Asn1SequenceType {
     private static final int ROLE_NAME = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new ExplicitField(ROLE_AUTHORITY, -1, GeneralNames.class),
-        new ExplicitField(ROLE_NAME, -1, GeneralName.class)
+        new ExplicitField(ROLE_AUTHORITY, GeneralNames.class),
+        new ExplicitField(ROLE_NAME, GeneralName.class)
     };
 
     public RoleSyntax() {

@@ -36,8 +36,8 @@ public class PolicyMapping extends Asn1SequenceType {
     private static final int SUBJECT_DOMAIN_POLICY = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ISSUER_DOMAIN_POLICY, -1, CertPolicyId.class),
-        new Asn1FieldInfo(SUBJECT_DOMAIN_POLICY, -1, CertPolicyId.class)
+        new Asn1FieldInfo(ISSUER_DOMAIN_POLICY, CertPolicyId.class),
+        new Asn1FieldInfo(SUBJECT_DOMAIN_POLICY, CertPolicyId.class)
     };
 
     public PolicyMapping() {

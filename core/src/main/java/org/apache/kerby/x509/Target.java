@@ -21,6 +21,7 @@ package org.apache.kerby.x509;
 
 import org.apache.kerby.asn1.type.Asn1Choice;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  * Ref. RFC 3281
@@ -38,9 +39,9 @@ public class Target extends Asn1Choice {
     private static final int TARGET_CERT = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(TARGET_NAME, -1, GeneralName.class),
-        new Asn1FieldInfo(TARGET_GROUP, -1, GeneralName.class),
-        new Asn1FieldInfo(TARGET_CERT, -1, TargetCert.class),
+        new ExplicitField(TARGET_NAME, GeneralName.class),
+        new ExplicitField(TARGET_GROUP, GeneralName.class),
+        new ExplicitField(TARGET_CERT, TargetCert.class),
     };
 
     public Target() {

@@ -39,9 +39,9 @@ public class IssuerSerial extends Asn1SequenceType {
     private static final int ISSUER_UID = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ISSUER, -1, GeneralNames.class),
-        new Asn1FieldInfo(SERIAL, -1, CertificateSerialNumber.class),
-        new Asn1FieldInfo(ISSUER_UID, -1, Asn1BitString.class)
+        new Asn1FieldInfo(ISSUER, GeneralNames.class),
+        new Asn1FieldInfo(SERIAL, CertificateSerialNumber.class),
+        new Asn1FieldInfo(ISSUER_UID, Asn1BitString.class)
     };
 
     public IssuerSerial() {

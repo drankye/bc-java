@@ -31,9 +31,9 @@ public class DSAParameter extends Asn1SequenceType {
     private static final int G = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(P, -1, Asn1Integer.class),
-        new Asn1FieldInfo(Q, -1, Asn1Integer.class),
-        new Asn1FieldInfo(G, -1, Asn1Integer.class)
+        new Asn1FieldInfo(P, Asn1Integer.class),
+        new Asn1FieldInfo(Q, Asn1Integer.class),
+        new Asn1FieldInfo(G, Asn1Integer.class)
     };
 
     public DSAParameter() {

@@ -21,6 +21,7 @@ package org.apache.kerby.x509;
 
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  * Produce an object suitable for an ASN1OutputStream.
@@ -41,9 +42,9 @@ public class V2Form extends Asn1SequenceType {
     private static final int OBJECT_DIGEST_INFO = 2;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ISSUER_NAME, -1, GeneralNames.class),
-        new Asn1FieldInfo(BASE_CERTIFICATE_ID, -1, IssuerSerial.class),
-        new Asn1FieldInfo(OBJECT_DIGEST_INFO, -1, ObjectDigestInfo.class)
+        new Asn1FieldInfo(ISSUER_NAME, GeneralNames.class),
+        new ExplicitField(BASE_CERTIFICATE_ID, 0, IssuerSerial.class),
+        new ExplicitField(OBJECT_DIGEST_INFO, 1, ObjectDigestInfo.class)
     };
 
     public V2Form() {
