@@ -39,9 +39,20 @@ public class Asn1Any extends AbstractAsn1Type<Asn1Type> {
         super(TagClass.UNIVERSAL, UniversalTag.ANY.getValue());
     }
 
+    // For encoding phase.
     public Asn1Any(Asn1Type anyValue) {
         this();
         setValue(anyValue);
+    }
+
+    // For decoding phase, value may be an Asn1Item, not fully decoded.
+    public void setItem(Asn1Type value) {
+        this.field = value;
+    }
+
+    // For decoding phase.
+    public Asn1Type getItem() {
+        return field;
     }
 
     @Override
@@ -58,8 +69,9 @@ public class Asn1Any extends AbstractAsn1Type<Asn1Type> {
         // Not used
     }
 
+    // Available for encoding phase.
     protected <T extends Asn1Type> T getValueAs(Class<T> t) {
-        Asn1Type value = field;
+        Asn1Type value = getValue();
         if (value == null) {
             return null;
         }

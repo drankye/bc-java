@@ -22,6 +22,7 @@ package org.apache.kerby.x509;
 import org.apache.kerby.asn1.type.Asn1Boolean;
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  * <pre>
@@ -43,7 +44,7 @@ public class IssuingDistributionPoint extends Asn1SequenceType {
     private static final int ONLY_CONTAINS_ATTRIBUTE_CERTS = 5;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(DISTRIBUTION_POINT, -1, DistributionPointName.class),
+        new ExplicitField(DISTRIBUTION_POINT, DistributionPointName.class),
         new Asn1FieldInfo(ONLY_CONTAINS_USER_CERTS, -1, Asn1Boolean.class),
         new Asn1FieldInfo(ONLY_CONTAINS_CA_CERTS, -1, Asn1Boolean.class),
         new Asn1FieldInfo(ONLY_SOME_REASONS, -1, ReasonFlags.class),

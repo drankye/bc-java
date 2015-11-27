@@ -33,8 +33,8 @@ public class AlgorithmIdentifier extends Asn1SequenceType {
     private static final int PARAMETERS = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-            new Asn1FieldInfo(ALGORITHM, -1, Asn1ObjectIdentifier.class),
-            new Asn1FieldInfo(PARAMETERS, -1, Asn1Any.class)
+            new Asn1FieldInfo(ALGORITHM, Asn1ObjectIdentifier.class),
+            new Asn1FieldInfo(PARAMETERS, Asn1Any.class)
     };
 
     public AlgorithmIdentifier() {

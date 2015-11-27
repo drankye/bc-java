@@ -23,9 +23,7 @@ import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
- * <a href="http://tools.ietf.org/html/rfc5652#section-5.1">RFC 5652</a>:
- * <p>
- * A signed data object containing multitude of {@link SignerInfo}s.
+ * Ref. RFC 5652
  * <pre>
  * SignedData ::= SEQUENCE {
  *     version CMSVersion,
@@ -35,34 +33,9 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  *     crls [1] IMPLICIT RevocationInfoChoices OPTIONAL,
  *     signerInfos SignerInfos
  *   }
- *
- * DigestAlgorithmIdentifiers ::= SET OF DigestAlgorithmIdentifier
- *
- * SignerInfos ::= SET OF SignerInfo
  * </pre>
- * <p>
- * The version calculation uses following ruleset from RFC 5652 section 5.1:
- * <pre>
- * IF ((certificates is present) AND
- *    (any certificates with a type of other are present)) OR
- *    ((crls is present) AND
- *    (any crls with a type of other are present))
- * THEN version MUST be 5
- * ELSE
- *    IF (certificates is present) AND
- *       (any version 2 attribute certificates are present)
- *    THEN version MUST be 4
- *    ELSE
- *       IF ((certificates is present) AND
- *          (any version 1 attribute certificates are present)) OR
- *          (any SignerInfo structures are version 3) OR
- *          (encapContentInfo eContentType is other than id-data)
- *       THEN version MUST be 3
- *       ELSE version MUST be 1
- * </pre>
- * <p>
+ *
  */
-
 public class SignedData extends Asn1SequenceType {
     private static final int CMS_VERSION = 0;
     private static final int DIGEST_ALGORITHMS = 1;

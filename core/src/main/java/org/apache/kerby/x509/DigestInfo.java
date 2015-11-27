@@ -30,7 +30,8 @@ import org.apache.kerby.asn1.type.Asn1SequenceType;
  * <pre>
  * DigestInfo::=SEQUENCE{
  *          digestAlgorithm  AlgorithmIdentifier,
- *          digest OCTET STRING }
+ *          digest OCTET STRING
+ * }
  * </pre>
  */
 public class DigestInfo extends Asn1SequenceType {

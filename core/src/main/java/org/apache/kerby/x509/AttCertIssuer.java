@@ -37,8 +37,8 @@ public class AttCertIssuer extends Asn1Choice {
     private static final int V2_FORM = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(V1_FORM, -1, GeneralNames.class),
-        new Asn1FieldInfo(V2_FORM, -1, V2Form.class)
+        new Asn1FieldInfo(V1_FORM, GeneralNames.class),
+        new ExplicitField(V2_FORM, 0, V2Form.class)
     };
 
     public AttCertIssuer() {

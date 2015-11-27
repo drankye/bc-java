@@ -35,21 +35,15 @@ import org.apache.kerby.asn1.type.Asn1Type;
  * }
  *
  * ContentType ::= OBJECT IDENTIFIER
- *
- * EncapsulatedContentInfo ::= SEQUENCE {
- *     eContentType ContentType,
- *     eContent [0] EXPLICIT OCTET STRING OPTIONAL
- * }
  * </pre>
  */
 public class ContentInfo extends Asn1SequenceType {
-
     private static final int CONTENT_TYPE = 0;
     private static final int CONTENT = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[]{
-        new Asn1FieldInfo(CONTENT_TYPE, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(CONTENT, Asn1Any.class),
+        new Asn1FieldInfo(CONTENT_TYPE, -1, Asn1ObjectIdentifier.class, true),
+        new Asn1FieldInfo(CONTENT, 0, Asn1Any.class, false),
     };
 
     public ContentInfo() {

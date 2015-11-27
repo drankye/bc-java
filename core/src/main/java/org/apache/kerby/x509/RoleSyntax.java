@@ -21,6 +21,7 @@ package org.apache.kerby.x509;
 
 import org.apache.kerby.asn1.type.Asn1FieldInfo;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
+import org.apache.kerby.asn1.type.ExplicitField;
 
 /**
  *Ref. RFC3281
@@ -36,8 +37,8 @@ public class RoleSyntax extends Asn1SequenceType {
     private static final int ROLE_NAME = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ROLE_AUTHORITY, -1, GeneralNames.class),
-        new Asn1FieldInfo(ROLE_NAME, -1, GeneralName.class)
+        new ExplicitField(ROLE_AUTHORITY, -1, GeneralNames.class),
+        new ExplicitField(ROLE_NAME, -1, GeneralName.class)
     };
 
     public RoleSyntax() {

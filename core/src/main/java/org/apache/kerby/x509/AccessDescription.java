@@ -24,11 +24,12 @@ import org.apache.kerby.asn1.type.Asn1ObjectIdentifier;
 import org.apache.kerby.asn1.type.Asn1SequenceType;
 
 /**
- * The AccessDescription object.
+ *
  * <pre>
  * AccessDescription  ::=  SEQUENCE {
  *       accessMethod          OBJECT IDENTIFIER,
- *       accessLocation        GeneralName  }
+ *       accessLocation        GeneralName
+ *  }
  * </pre>
  */
 public class AccessDescription extends Asn1SequenceType {
@@ -39,8 +40,8 @@ public class AccessDescription extends Asn1SequenceType {
     private static final int ACCESS_LOCATION = 1;
 
     static Asn1FieldInfo[] fieldInfos = new Asn1FieldInfo[] {
-        new Asn1FieldInfo(ACCESS_METHOD, -1, Asn1ObjectIdentifier.class),
-        new Asn1FieldInfo(ACCESS_LOCATION, -1, GeneralName.class)
+        new Asn1FieldInfo(ACCESS_METHOD, Asn1ObjectIdentifier.class),
+        new Asn1FieldInfo(ACCESS_LOCATION, GeneralName.class)
     };
 
     public AccessDescription() {
